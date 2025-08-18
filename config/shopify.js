@@ -83,6 +83,41 @@ class ShopifyAPI {
       throw error;
     }
   }
+
+  // Add this method to your ShopifyAPI class in config/shopify.js
+  async makeGraphQLRequest(query, variables = {}) {
+    try {
+      const response = await axios.post(
+        `https://${this.storeUrl}/admin/api/2023-10/graphql.json`,
+        {
+          query: query,
+          variables: variables,
+        },
+        {
+          headers: {
+            "X-Shopify-Access-Token": this.accessToken,
+            "Content-Type": "application/json",
+          },
+          timeout: 300000, // 5 minutes timeout for large operations
+        }
+      );
+
+      if (response.data.errors) {
+        throw new Error(
+          `GraphQL Error: ${JSON.stringify(response.data.errors)}`
+        );
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error("Shopify GraphQL Error:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
+      throw error;
+    }
+  }
 }
 
 // Main store instance (for product management)

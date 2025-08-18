@@ -1,84 +1,103 @@
 <style>
-/* Keep all your existing styles - they remain the same */
-.container {
+  /* Keep all your existing styles - they remain the same */
+  .container {
     max-width: 1450px;
     margin: 0 auto;
     padding: 20px;
-}
+  }
 
-.header {
+  .header {
     text-align: center;
     margin-bottom: 30px;
-    background: white;
+    background: #ff5900c4;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+  }
 
-.main-card {
+  .main-card {
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-}
+  }
 
-.card-header {
+  .card-header {
     padding: 20px;
     border-bottom: 1px solid #eee;
-}
+    text-align: center;
+    background: gainsboro;
+    border-radius: 10px;
+  }
 
-.card-body {
+  .card-header h2 {
+    font-weight: 700;
+  }
+
+  form#productSearchForm {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .card-body {
     padding: 20px;
-}
+  }
 
-.alert {
+  .alert {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 4px;
     display: none;
-}
+  }
 
-.alert-success {
+  .alert-success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
-}
+  }
 
-.alert-error {
+  .alert-error {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
-}
+  }
 
-.alert-info {
+  .alert-info {
     background-color: #d1ecf1;
     color: #0c5460;
     border: 1px solid #bee5eb;
-}
+  }
 
-.search-container {
+  .search-container {
     position: relative;
+    width: 100%;
     margin-bottom: 20px;
-}
+  }
 
-.search-input {
+  .search-input {
     width: 100%;
     padding: 12px 40px 12px 12px;
-    border: 2px solid #ddd;
+    border: 2px solid #cfaaaa;
     border-radius: 6px;
     font-size: 16px;
-}
-
-.search-icon {
+    background: #fff1d7;
+  }
+  .search-icon {
     position: absolute;
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: #666;
-}
+  }
 
-.search-btn, .upload-btn, .save-btn {
-    background: #5c6ac4;
+  .search-btn,
+  .save-btn {
+    background: #fd7d39;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -86,33 +105,38 @@
     cursor: pointer;
     font-size: 16px;
     margin: 10px 5px;
-}
+  }
 
-.search-btn:hover, .upload-btn:hover, .save-btn:hover {
-    background: #4c5aa0;
-}
+  .search-btn:hover,
+  .upload-btn:hover,
+  .save-btn:hover {
+    background: #9c5f05;
+  }
 
-.search-btn:disabled, .upload-btn:disabled, .save-btn:disabled {
+  .search-btn:disabled,
+  .upload-btn:disabled,
+  .save-btn:disabled {
     background: #ccc;
     cursor: not-allowed;
-}
+  }
 
-.product-dropdown {
+  .product-dropdown {
     width: 100%;
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid #dfa5a5;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 20px;
     margin-bottom: 20px;
-}
+    background: #a4f4a4;
+  }
 
-.loading {
+  .loading {
     text-align: center;
     padding: 40px;
     display: none;
-}
+  }
 
-.loading-spinner {
+  .loading-spinner {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #5c6ac4;
     border-radius: 50%;
@@ -120,49 +144,53 @@
     height: 40px;
     animation: spin 1s linear infinite;
     margin: 0 auto 20px;
-}
+  }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-.media-grid {
+  .media-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     margin: 20px 0;
-}
+  }
 
-.media-item {
+  .media-item {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     background: white;
-}
+  }
 
-.media-item img, .media-item video {
+  .media-item img,
+  .media-item video {
     width: 100%;
-    height: 150px;
+    height: auto;
     object-fit: cover;
-}
+  }
 
-.media-actions {
+  .media-actions {
     padding: 10px;
     display: flex;
     gap: 10px;
-}
+  }
 
-
-.media-item {
+  .media-item {
     position: relative;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
     background: #f9f9f9;
-}
+  }
 
-.media-type-badge {
+  .media-type-badge {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -175,44 +203,74 @@
     align-items: center;
     gap: 4px;
     z-index: 10;
-}
+  }
 
-.video-badge {
+  .video-badge {
     background: rgba(220, 53, 69, 0.9);
-}
+  }
 
-.image-badge {
+  .image-badge {
     background: rgba(40, 167, 69, 0.9);
-}
+  }
 
+  .select-product,
+  .upload-files-container {
+    display: flex;
+    justify-content: center;
+  }
 
+  div#productSelection {
+    width: 100%;
+    text-align: center;
+    border: 1px solid yellow;
+    padding: 30px;
+    background: #dfdfdfe6;
+    border-radius: 15px;
+  }
 
-.btn-small {
+  div#uploadSection {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #eeee15f2;
+    padding: 30px;
+    background: #fff3de;
+    border-radius: 15px;
+  }
+  div#thumbnailSection {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #eeee15f2;
+    padding: 30px;
+    background: #fff3de;
+    border-radius: 15px;
+  }
+
+  .btn-small {
     padding: 5px 10px;
     font-size: 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+  }
 
-.btn-danger {
+  .btn-danger {
     background: #dc3545;
     color: white;
-}
+  }
 
-.btn-info {
+  .btn-info {
     background: #17a2b8;
     color: white;
-}
+  }
 
-.variants-section {
+  .variants-section {
     margin-top: 30px;
     padding: 20px;
     background: #f8f9fa;
     border-radius: 8px;
-}
+  }
 
-.variant-item {
+  .variant-item {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -221,89 +279,104 @@
     border-radius: 6px;
     margin-bottom: 10px;
     width: 23%;
-}
+  }
 
-div#variantsList {
+  div#variantsList {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-}
+    background: gainsboro;
+    padding: 30px;
+    border-radius: 15px;
+  }
 
-.variant-info {
+  .variant-info {
     flex: 1;
-}
+  }
 
-.variant-image-input {
+  .variant-image-input {
     flex: 2;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-}
+  }
 
-.section {
+  .section {
     margin-bottom: 30px;
-}
+  }
 
-.section h3 {
-    margin-bottom: 15px;
+  .section h3 {
+    margin-bottom: 16px;
     color: #333;
-}
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+  }
 
-.product-info {
+  .file-input input[type="file"] {
+    width: 100%;
+
+    border: 2px dashed #ddd;
+    background: #c7ebc7;
+    border-radius: 6px;
+    padding: 74px 20px !important;
+    cursor: pointer;
+  }
+  .product-info {
     background: #f8f9fa;
     padding: 15px;
     border-radius: 6px;
     margin-top: 15px;
-}
+  }
 
-.file-input {
+  .file-input {
     margin: 10px 0;
-}
+  }
 
-.file-input input[type="file"] {
+  .file-input input[type="file"] {
     width: 100%;
     padding: 10px;
     border: 2px dashed #ddd;
     border-radius: 6px;
-}
+  }
 
-.upload-progress {
+  .upload-progress {
     display: none;
     margin-top: 10px;
-}
+  }
 
-.progress-bar {
+  .progress-bar {
     width: 100%;
     height: 20px;
     background-color: #f0f0f0;
     border-radius: 10px;
     overflow: hidden;
-}
+  }
 
-.progress-fill {
+  .progress-fill {
     height: 100%;
     background-color: #5c6ac4;
     width: 0%;
     transition: width 0.3s ease;
-}
+  }
 
-@media (max-width:768px){
+  @media (max-width: 768px) {
     .variant-item {
-        width: 95%;
+      width: 95%;
     }
-}
+  }
 
-/* Notification Styles */
-.notification-container {
+  /* Notification Styles */
+  .notification-container {
     position: fixed;
     top: 20px;
     left: 20px;
     z-index: 10000;
     max-width: 400px;
-}
+  }
 
-.notification {
+  .notification {
     background: white;
     border-radius: 8px;
     padding: 16px;
@@ -312,55 +385,55 @@ div#variantsList {
     border-left: 4px solid;
     animation: slideIn 0.3s ease-out;
     position: relative;
-}
+  }
 
-.notification.success {
+  .notification.success {
     border-left-color: #28a745;
     background: #f8fff9;
-}
+  }
 
-.notification.error {
+  .notification.error {
     border-left-color: #dc3545;
     background: #fff8f8;
-}
+  }
 
-.notification.info {
+  .notification.info {
     border-left-color: #17a2b8;
     background: #f8fcff;
-}
+  }
 
-.notification.warning {
+  .notification.warning {
     border-left-color: #ffc107;
     background: #fffef8;
-}
+  }
 
-.notification-content {
+  .notification-content {
     display: flex;
     align-items: center;
     gap: 10px;
-}
+  }
 
-.notification-icon {
+  .notification-icon {
     font-size: 18px;
-}
+  }
 
-.notification.success .notification-icon {
+  .notification.success .notification-icon {
     color: #28a745;
-}
+  }
 
-.notification.error .notification-icon {
+  .notification.error .notification-icon {
     color: #dc3545;
-}
+  }
 
-.notification.info .notification-icon {
+  .notification.info .notification-icon {
     color: #17a2b8;
-}
+  }
 
-.notification.warning .notification-icon {
+  .notification.warning .notification-icon {
     color: #ffc107;
-}
+  }
 
-.notification-close {
+  .notification-close {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -370,105 +443,102 @@ div#variantsList {
     cursor: pointer;
     color: #666;
     padding: 4px;
-}
+  }
 
-.notification-close:hover {
+  .notification-close:hover {
     color: #333;
-}
+  }
 
-@keyframes slideIn {
+  @keyframes slideIn {
     from {
-        transform: translateX(-100%);
-        opacity: 0;
+      transform: translateX(-100%);
+      opacity: 0;
     }
     to {
-        transform: translateX(0);
-        opacity: 1;
+      transform: translateX(0);
+      opacity: 1;
     }
-}
+  }
 
-@keyframes slideOut {
+  @keyframes slideOut {
     from {
-        transform: translateX(0);
-        opacity: 1;
+      transform: translateX(0);
+      opacity: 1;
     }
     to {
-        transform: translateX(-100%);
-        opacity: 0;
+      transform: translateX(-100%);
+      opacity: 0;
     }
-}
+  }
 
-/* Button Loading States */
-.btn-loading {
-    display: none !important;
-}
+  .loading .btn-text {
+    display: none;
+  }
 
-.loading .btn-text {
-    display: none !important;
-}
-
-.loading .btn-loading {
-    display: inline-flex !important;
+  .loading .btn-loading {
+    display: flex !important;
     align-items: center;
     gap: 8px;
-}
+  }
 
-/* Copy Button States */
-.btn-copied {
+  /* Copy Button States */
+  .btn-copied {
     background: #28a745 !important;
     color: white !important;
-}
+  }
 
-.btn-copied i {
+  .btn-copied i {
     animation: none !important;
-}
+  }
 
-/* Thumbnail Styles */
-.thumbnail-inputs {
+  /* Thumbnail Styles */
+  .thumbnail-inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
-}
+  }
 
-.thumbnail-input-group {
+  .thumbnail-input-group {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 15px;
     background: #f9f9f9;
-}
+  }
 
-.thumbnail-input-group label {
+  .thumbnail-input-group label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
     color: #333;
-}
+  }
 
-.thumbnail-input {
+  .thumbnail-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
-}
+  }
 
-.thumbnail-input:focus {
+  .thumbnail-input:focus {
     outline: none;
     border-color: #007cba;
     box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
-}
+  }
 
-.thumbnail-preview-container {
+  .thumbnail-preview-container {
     margin-top: 10px;
-}
+  }
 
-.thumbnail-actions {
-    
+  .thumbnail-actions {
     margin-top: 15px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.btn-secondary {
+  .btn-secondary {
     background: #6c757d;
     color: white;
     border: none;
@@ -479,24 +549,23 @@ div#variantsList {
     display: flex;
     align-items: center;
     gap: 8px;
-}
+  }
 
-.btn-secondary:hover {
+  .btn-secondary:hover {
     background: #5a6268;
-}
+  }
 
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
     .thumbnail-inputs {
-        flex-direction: row;
+      flex-direction: row;
     }
-    
+
     .thumbnail-input-group {
-        flex: 1;
+      flex: 1;
     }
-}
+  }
 
-
-.btn-danger {
+  .btn-danger {
     background: #dc3545;
     color: white;
     border: none;
@@ -506,23 +575,22 @@ div#variantsList {
     display: flex;
     align-items: center;
     gap: 8px;
-}
+  }
 
-.btn-danger:hover {
+  .btn-danger:hover {
     background: #c82333;
-}
+  }
 
-.btn-danger:disabled {
+  .btn-danger:disabled {
     background: #ccc;
     cursor: not-allowed;
-}
+  }
 
-
-.media-item {
+  .media-item {
     position: relative;
-}
+  }
 
-.media-type-badge {
+  .media-type-badge {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -535,274 +603,529 @@ div#variantsList {
     align-items: center;
     gap: 4px;
     z-index: 10;
-}
+  }
 
-.video-badge {
+  .video-badge {
     background: rgba(220, 53, 69, 0.9);
-}
+  }
 
-.image-badge {
+  .image-badge {
     background: rgba(40, 167, 69, 0.9);
-}
+    width: fit-content;
+  }
 
-video {
+  video {
     border-radius: 4px;
-}
+  }
 
-/* Loading indicator for videos */
-video:not([src]) {
+  /* Loading indicator for videos */
+  video:not([src]) {
     background: #f8f9fa;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+  }
 
-video:not([src])::before {
+  video:not([src])::before {
     content: "Loading video...";
     color: #6c757d;
-}
+  }
 
+  /* Media section styles */
+  .media-subsection {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    background: #eee0e0;
+  }
 
+  .media-subsection h3 {
+    margin: 0;
+    color: #333;
+    font-size: 22px;
+  }
 
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+  }
 
+  .media-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    background: white;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .media-content {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .media-type-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 10;
+  }
+
+  .video-badge {
+    background: rgba(220, 53, 69, 0.9);
+    width: fit-content;
+  }
+
+  .image-badge {
+    background: rgba(40, 167, 69, 0.9);
+  }
+
+  .media-source-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+  }
+
+  .metafield-badge {
+    background: rgba(0, 123, 255, 0.9);
+  }
+
+  .default-badge {
+    background: rgba(108, 117, 125, 0.9);
+  }
+
+  .media-info {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .media-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+  }
+
+  .btn-info {
+    background: #17a2b8;
+    color: white;
+  }
+
+  .btn-info:hover {
+    background: #138496;
+  }
+
+  .btn-danger {
+    background: #dc3545;
+    color: white;
+  }
+
+  .btn-danger:hover {
+    background: #c82333;
+  }
+
+  .btn-danger:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: #6c757d;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #5a6268;
+  }
+
+  .btn-success {
+    background: #28a745;
+    color: white;
+  }
+
+  .btn-success:hover {
+    background: #218838;
+  }
+
+  .btn-loading {
+    display: none;
+  }
+
+  .btn-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .model-badge {
+    background: rgba(255, 193, 7, 0.9);
+  }
+
+  .upload-btn {
+    background: #fd7d39;
+    color: white;
+    border: none;
+    padding: 25px 60px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px 5px;
+  }
 </style>
-
 {% if customer and customer.tags contains 'approved_staff' %}
 
 <div class="container">
-    <!-- Popup Notifications -->
-    <div id="notificationContainer" class="notification-container"></div>
-    
-    <div class="header">
-        <h1><i class="fas fa-cloud-upload-alt"></i> Shopify Media Manager</h1>
-        <p>Upload and manage images and videos for your Shopify products</p>
+  <!-- Popup Notifications -->
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <div class="header">
+    <h1>Shopify Media Management</h1>
+    <p>Upload and manage images and videos for the products</p>
+  </div>
+
+  <div class="main-card">
+    <div class="card-header">
+      <h2>Search for a product</h2>
+      <p>
+        Search for products, upload media to external Shopify store, and manage
+        variant images
+      </p>
     </div>
 
-    <div class="main-card">
-        <div class="card-header">
-            <h2><i class="fas fa-images"></i> Product Media Management</h2>
-            <p>Search for products, upload media to external Shopify store, and manage variant images</p>
-        </div>
+    <div class="card-body">
+      <!-- Product Search Section -->
+      <div class="section">
+        <form id="productSearchForm">
+          <div class="search-container">
+            <input
+              type="text"
+              id="productSearch"
+              class="search-input"
+              placeholder="Search by product title or SKU..."
+              required
+            />
+            <i class="fas fa-search search-icon"></i>
+          </div>
 
-        <div class="card-body">
-            <!-- Product Search Section -->
-            <div class="section">
-                <h3><i class="fas fa-search"></i> Search Products</h3>
-                
-                <form id="productSearchForm">
-                    <div class="search-container">
-                        <input type="text" 
-                               id="productSearch" 
-                               class="search-input"
-                               placeholder="Search by product title or SKU..."
-                               required>
-                        <i class="fas fa-search search-icon"></i>
-                    </div>
-
-                    <button type="submit" class="search-btn" id="searchBtn">
-                        <span class="btn-text">
-                            <i class="fas fa-search"></i> Search Products
-                        </span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Searching...
-                        </span>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Loading Spinner -->
-            <div class="loading" id="loadingSpinner">
-                <div class="loading-spinner"></div>
-                <p>Searching products...</p>
-            </div>
-
-            <!-- Product Selection -->
-            <div class="section" id="productSelection" style="display: none;">
-                <h3><i class="fas fa-box"></i> Select Product</h3>
-                <select id="productDropdown" class="product-dropdown">
-                    <option value="">Select a product...</option>
-                </select>
-                <div id="productInfo" class="product-info" style="display: none;"></div>
-            </div>
-
-            <!-- Media Upload Section -->
-            <div class="section" id="uploadSection" style="display: none;">
-                <h3><i class="fas fa-cloud-upload-alt"></i> Upload Media to External Shopify Store</h3>
-                
-              <div class="file-input">
-    <input type="file" id="mediaFile" accept="image/*,video/*" multiple>
-</div>
-
-                
-                <button id="uploadButton" class="upload-btn">
-                    <span class="btn-text">
-                        <i class="fas fa-upload"></i> Upload Selected Files
-                    </span>
-                    <span class="btn-loading" style="display: none;">
-                        <i class="fas fa-spinner fa-spin"></i> Uploading...
-                    </span>
-                </button>
-
-                <div class="upload-progress" id="uploadProgress">
-                    <p>Uploading files to external Shopify store...</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Current Media Display -->
-      <div class="section" id="mediaSection" style="display: none;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <h3><i class="fas fa-images"></i> Current Media</h3>
-        <button id="deleteAllMediaBtn" class="btn-danger" style="padding: 8px 16px;">
+          <button type="submit" class="search-btn" id="searchBtn">
             <span class="btn-text">
-                <i class="fas fa-trash-alt"></i> Delete All Media
+              <i class="fas fa-search"></i> Search Products
             </span>
-            <span class="btn-loading" style="display: none;">
-                <i class="fas fa-spinner fa-spin"></i> Deleting...
+            <span class="btn-loading" style="display: none">
+              <i class="fas fa-spinner fa-spin"></i> Searching...
             </span>
-        </button>
-    </div>
-    <div id="mediaGrid" class="media-grid"></div>
-</div>
+          </button>
+        </form>
+      </div>
 
-            <!-- Thumbnail Images Section -->
-            <div class="section" id="thumbnailSection" style="display: none;">
-                <h3><i class="fas fa-image"></i> Product Thumbnail Images</h3>
-                <p>Add up to 2 thumbnail image URLs for this product</p>
-                
-                <div class="thumbnail-inputs">
-                    <div class="thumbnail-input-group">
-                        <label for="thumbnail1">Thumbnail Image 1:</label>
-                        <input type="url" 
-                               id="thumbnail1" 
-                               class="thumbnail-input"
-                               placeholder="Enter first thumbnail image URL..."
-                               onchange="updateThumbnailPreview(1, this.value)">
-                                                <div class="thumbnail-preview" id="thumbnail-preview-1"></div>
-                    </div>
-                    
-                    <div class="thumbnail-input-group">
-                        <label for="thumbnail2">Thumbnail Image 2:</label>
-                        <input type="url" 
-                               id="thumbnail2" 
-                               class="thumbnail-input"
-                               placeholder="Enter second thumbnail image URL..."
-                               onchange="updateThumbnailPreview(2, this.value)">
-                        <div class="thumbnail-preview" id="thumbnail-preview-2"></div>
-                    </div>
-                </div>
-                
-                <div class="thumbnail-actions">
-                    <button id="saveThumbnails" class="save-btn" onclick="saveThumbnailImages()">
-                        <span class="btn-text">
-                            <i class="fas fa-save"></i> Save Thumbnail Images
-                        </span>
-                        <span class="btn-loading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Saving...
-                        </span>
-                    </button>
-                    <button id="clearThumbnails" class="btn-secondary" onclick="clearAllThumbnails()">
-                        <i class="fas fa-times"></i> Clear All
-                    </button>
-                </div>
-            </div>
+      <!-- Loading Spinner -->
+      <div class="loading" id="loadingSpinner">
+        <div class="loading-spinner"></div>
+        <p>Searching products...</p>
+      </div>
 
-            <!-- Variants Management -->
-            <div class="section" id="variantsSection" style="display: none;">
-                <h3><i class="fas fa-layer-group"></i> Variant Images</h3>
-                <div id="variantsList"></div>
-            </div>
-
-            <!-- Save Changes -->
-            <div class="section" id="saveSection" style="display: none;">
-                <button id="saveChanges" class="save-btn">
-                    <span class="btn-text">
-                        <i class="fas fa-save"></i> Save All Changes
-                    </span>
-                    <span class="btn-loading" style="display: none;">
-                        <i class="fas fa-spinner fa-spin"></i> Saving...
-                    </span>
-                </button>
-            </div>
+      <!-- Product Selection -->
+      <div class="select-product">
+        <div class="section" id="productSelection" style="display: none">
+          <h3><i class="fas fa-box"></i> Select Product</h3>
+          <select id="productDropdown" class="product-dropdown">
+            <option value="">Select a product...</option>
+          </select>
+          <div
+            id="productInfo"
+            class="product-info"
+            style="display: none"
+          ></div>
         </div>
+      </div>
+
+      <!-- Media Upload Section -->
+      <div class="upload-files-container">
+        <div class="section" id="uploadSection" style="display: none">
+          <h3>
+            <i class="fas fa-cloud-upload-alt"></i> Upload Media to External
+            Shopify Store
+          </h3>
+
+          <div class="file-input">
+            <input
+              type="file"
+              id="mediaFile"
+              accept="image/*,video/*"
+              multiple
+            />
+          </div>
+
+          <button id="uploadButton" class="upload-btn">
+            <span class="btn-text">
+              <i class="fas fa-upload"></i> Upload Selected Files
+            </span>
+            <span class="btn-loading" style="display: none">
+              <i class="fas fa-spinner fa-spin"></i> Uploading...
+            </span>
+          </button>
+
+          <div class="upload-progress" id="uploadProgress">
+            <p>Uploading files to external Shopify store...</p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Media Display -->
+      <div class="section" id="mediaSection" style="display: none">
+        <!-- Metafield Media Section -->
+        <div class="media-subsection">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 15px;
+              text-align: center;
+            "
+          >
+            <h3>
+              <i class="fas fa-cloud"></i> Metafield Media (External Store)
+            </h3>
+            <button
+              id="deleteAllMetafieldMediaBtn"
+              class="btn-danger"
+              style="padding: 8px 16px"
+            >
+              <span class="btn-text">
+                <i class="fas fa-trash-alt"></i> Delete All Metafield Media
+              </span>
+              <span class="btn-loading" style="display: none">
+                <i class="fas fa-spinner fa-spin"></i> Deleting...
+              </span>
+            </button>
+          </div>
+          <div id="metafieldMediaGrid" class="media-grid"></div>
+        </div>
+
+        <!-- Default Product Media Section -->
+        <div class="media-subsection" style="margin-top: 30px">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 15px;
+            "
+          >
+            <h3>
+              <i class="fas fa-images"></i> Default Product Media (Main Store)
+            </h3>
+            <button
+              id="deleteAllDefaultMediaBtn"
+              class="btn-danger"
+              style="padding: 8px 16px"
+            >
+              <span class="btn-text">
+                <i class="fas fa-trash-alt"></i> Delete All Default Media
+              </span>
+              <span class="btn-loading" style="display: none">
+                <i class="fas fa-spinner fa-spin"></i> Deleting...
+              </span>
+            </button>
+          </div>
+          <div id="defaultMediaGrid" class="media-grid"></div>
+        </div>
+      </div>
+
+      <!-- Thumbnail Images Section -->
+      <div class="thumbnail-section">
+        <div class="section" id="thumbnailSection" style="display: none">
+          <h3><i class="fas fa-image"></i> Product Thumbnail Images</h3>
+          <p>Add up to 2 thumbnail image URLs for this product</p>
+
+          <div class="thumbnail-inputs">
+            <div class="thumbnail-input-group">
+              <label for="thumbnail1">Thumbnail Image 1:</label>
+              <input
+                type="url"
+                id="thumbnail1"
+                class="thumbnail-input"
+                placeholder="Enter first thumbnail image URL..."
+                onchange="updateThumbnailPreview(1, this.value)"
+              />
+              <div class="thumbnail-preview" id="thumbnail-preview-1"></div>
+            </div>
+
+            <div class="thumbnail-input-group">
+              <label for="thumbnail2">Thumbnail Image 2:</label>
+              <input
+                type="url"
+                id="thumbnail2"
+                class="thumbnail-input"
+                placeholder="Enter second thumbnail image URL..."
+                onchange="updateThumbnailPreview(2, this.value)"
+              />
+              <div class="thumbnail-preview" id="thumbnail-preview-2"></div>
+            </div>
+          </div>
+
+          <div class="thumbnail-actions">
+            <button
+              id="saveThumbnails"
+              class="save-btn"
+              onclick="saveThumbnailImages()"
+            >
+              <span class="btn-text">
+                <i class="fas fa-save"></i> Save Thumbnail Images
+              </span>
+              <span class="btn-loading" style="display: none">
+                <i class="fas fa-spinner fa-spin"></i> Saving...
+              </span>
+            </button>
+            <button
+              id="clearThumbnails"
+              class="btn-secondary"
+              onclick="clearAllThumbnails()"
+            >
+              <i class="fas fa-times"></i> Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Variants Management -->
+      <div class="section" id="variantsSection" style="display: none">
+        <h3><i class="fas fa-layer-group"></i> Variant Images</h3>
+        <div id="variantsList"></div>
+      </div>
+
+      <!-- Save Changes -->
+      <div class="section" id="saveSection" style="display: none">
+        <button id="saveChanges" class="save-btn">
+          <span class="btn-text">
+            <i class="fas fa-save"></i> Save All Changes
+          </span>
+          <span class="btn-loading" style="display: none">
+            <i class="fas fa-spinner fa-spin"></i> Saving...
+          </span>
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 
- <script>
-// Frontend JavaScript for Shopify integration with external Shopify store uploads
-const API_BASE_URL = 'http://localhost:3000';
+<script>
+  // Frontend JavaScript for Shopify integration with external Shopify store uploads
+  const API_BASE_URL = "http://localhost:3000";
 
-let selectedProduct = null;
-let currentMedia = [];
-let variantChanges = {};
-let pendingUploads = [];
-let thumbnailImages = ['', ''];
-let thumbnailChanges = false;
+  let selectedProduct = null;
+  let currentMedia = [];
+  let variantChanges = {};
+  let pendingUploads = [];
+  let thumbnailImages = ["", ""];
+  let thumbnailChanges = false;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Event listeners - FIXED: Prevent form submission and reload
-    const searchForm = document.getElementById('productSearchForm');
-    const searchBtn = document.getElementById('searchBtn');
-    
-    // Remove any existing event listeners and prevent form submission
+  let currentMetafieldMedia = [];
+  let currentDefaultMedia = [];
+
+  // Load product details from local storage on page load
+  window.onload = function () {
+    const storedProduct = localStorage.getItem("selectedProduct");
+    if (storedProduct) {
+      selectedProduct = JSON.parse(storedProduct);
+      loadProductDetails();
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Event listeners
+    const searchForm = document.getElementById("productSearchForm");
+    const searchBtn = document.getElementById("searchBtn");
+
+    // Prevent form submission and reload
     if (searchForm) {
-        searchForm.onsubmit = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            searchProducts(e);
-            return false;
-        };
+      searchForm.onsubmit = function (e) {
+        e.preventDefault();
+        searchProducts(e);
+        return false;
+      };
     }
-    
-    if (searchBtn) {
-        searchBtn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            searchProducts(e);
-            return false;
-        };
-        
-        // Change button type to prevent form submission
-        searchBtn.type = 'button';
-    }
-    
-    // Other event listeners
-    document.getElementById('productDropdown').addEventListener('change', handleProductSelection);
-    
-    const uploadBtn = document.getElementById('uploadButton');
-    if (uploadBtn) {
-        uploadBtn.type = 'button';
-        uploadBtn.onclick = function(e) {
-            e.preventDefault();
-            uploadMedia();
-            return false;
-        };
-    }
-    
-    const saveBtn = document.getElementById('saveChanges');
-    if (saveBtn) {
-        saveBtn.type = 'button';
-        saveBtn.onclick = function(e) {
-            e.preventDefault();
-            saveAllChanges();
-            return false;
-        };
-    }
-});
 
-// Enhanced notification system
-function showNotification(type, message, duration = 5000) {
-    const container = document.getElementById('notificationContainer');
-    const notification = document.createElement('div');
+    if (searchBtn) {
+      searchBtn.onclick = function (e) {
+        e.preventDefault();
+        searchProducts(e);
+        return false;
+      };
+
+      // Change button type to prevent form submission
+      searchBtn.type = "button";
+    }
+
+    // Other event listeners
+    document
+      .getElementById("productDropdown")
+      .addEventListener("change", handleProductSelection);
+
+    const uploadBtn = document.getElementById("uploadButton");
+    if (uploadBtn) {
+      uploadBtn.type = "button";
+      uploadBtn.onclick = function (e) {
+        e.preventDefault();
+        uploadMedia();
+        return false;
+      };
+    }
+
+    const saveBtn = document.getElementById("saveChanges");
+    if (saveBtn) {
+      saveBtn.type = "button";
+      saveBtn.onclick = function (e) {
+        e.preventDefault();
+        saveAllChanges();
+        return false;
+      };
+    }
+  });
+
+  // Enhanced notification system
+  function showNotification(type, message, duration = 5000) {
+    const container = document.getElementById("notificationContainer");
+    const notification = document.createElement("div");
     notification.className = `notification ${type}`;
-    
+
     const iconMap = {
-        success: 'fas fa-check-circle',
-        error: 'fas fa-exclamation-triangle',
-        info: 'fas fa-info-circle',
-        warning: 'fas fa-exclamation-circle'
+      success: "fas fa-check-circle",
+      error: "fas fa-exclamation-triangle",
+      info: "fas fa-info-circle",
+      warning: "fas fa-exclamation-circle",
     };
 
     notification.innerHTML = `
@@ -819,581 +1142,999 @@ function showNotification(type, message, duration = 5000) {
 
     // Auto remove after duration
     setTimeout(() => {
-        if (notification.parentNode) {
-            closeNotification(notification.querySelector('.notification-close'));
-        }
+      if (notification.parentNode) {
+        closeNotification(notification.querySelector(".notification-close"));
+      }
     }, duration);
-}
+  }
 
-function closeNotification(closeBtn) {
-    const notification = closeBtn.closest('.notification');
-    notification.style.animation = 'slideOut 0.3s ease-out';
+  function closeNotification(closeBtn) {
+    const notification = closeBtn.closest(".notification");
+    notification.style.animation = "slideOut 0.3s ease-out";
     setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
     }, 300);
-}
+  }
 
-// Button loading state management
-function setButtonLoading(buttonId, loading) {
+  // Button loading state management
+  function setButtonLoading(buttonId, loading) {
     const button = document.getElementById(buttonId);
     if (button) {
-        if (loading) {
-            button.classList.add('loading');
-            button.disabled = true;
-        } else {
-            button.classList.remove('loading');
-            button.disabled = false;
-        }
-    }
-}
+      const btnText = button.querySelector(".btn-text");
+      const btnLoading = button.querySelector(".btn-loading");
 
-// Search products function - FIXED: Prevent form submission and reload
-async function searchProducts(e) {
+      if (loading) {
+        btnText.style.display = "none";
+        btnLoading.style.display = "flex";
+        button.disabled = true;
+      } else {
+        btnText.style.display = "flex";
+        btnLoading.style.display = "none";
+        button.disabled = false;
+      }
+    }
+  }
+
+  // Search products function
+  async function searchProducts(e) {
     if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-    
-    const searchQuery = document.getElementById('productSearch').value.trim();
-    
-    if (!searchQuery) {
-        showNotification('error', 'Please enter a search term');
-        return false;
+      e.preventDefault();
+      e.stopPropagation();
     }
 
-    setButtonLoading('searchBtn', true);
+    const searchQuery = document.getElementById("productSearch").value.trim();
+
+    if (!searchQuery) {
+      showNotification("error", "Please enter a search term");
+      return false;
+    }
+
+    setButtonLoading("searchBtn", true);
     showLoading(true);
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/products/search?query=${encodeURIComponent(searchQuery)}`);
-        const data = await response.json();
+      const response = await fetch(
+        `${API_BASE_URL}/api/products/search?query=${encodeURIComponent(
+          searchQuery
+        )}`
+      );
+      const data = await response.json();
 
-        if (data.products && data.products.length > 0) {
-            populateProductDropdown(data.products);
-            document.getElementById('productSelection').style.display = 'block';
-            showNotification('success', `Found ${data.products.length} products`);
-        } else {
-            showNotification('info', 'No products found');
-        }
+      if (data.products && data.products.length > 0) {
+        populateProductDropdown(data.products);
+        document.getElementById("productSelection").style.display = "block";
+        showNotification("success", `Found ${data.products.length} products`);
+      } else {
+        showNotification("info", "No products found");
+      }
     } catch (error) {
-        showNotification('error', `Search failed: ${error.message}`);
+      showNotification("error", `Search failed: ${error.message}`);
     } finally {
-        setButtonLoading('searchBtn', false);
-        showLoading(false);
+      setButtonLoading("searchBtn", false);
+      showLoading(false);
     }
-    
-    return false;
-}
+  }
 
-// Populate product dropdown
-function populateProductDropdown(products) {
-    const dropdown = document.getElementById('productDropdown');
+  // Populate product dropdown
+  function populateProductDropdown(products) {
+    const dropdown = document.getElementById("productDropdown");
     let options = '<option value="">Select a product...</option>';
-    
-    products.forEach(product => {
-        const sku = product.variants[0]?.sku || 'No SKU';
-        options += `<option value="${product.id}" data-product='${JSON.stringify(product)}'>${product.title} (SKU: ${sku})</option>`;
+
+    products.forEach((product) => {
+      const sku = product.variants[0]?.sku || "No SKU";
+      options += `<option value="${product.id}" data-product='${JSON.stringify(
+        product
+      )}'>${product.title} (SKU: ${sku})</option>`;
     });
-    
+
     dropdown.innerHTML = options;
-}
+  }
 
-// Handle product selection
-async function handleProductSelection(e) {
+  // Handle product selection
+  async function handleProductSelection(e) {
     const selectedOption = e.target.options[e.target.selectedIndex];
-    
+
     if (selectedOption.value) {
-        selectedProduct = JSON.parse(selectedOption.dataset.product);
-        await loadProductDetails();
-        showProductSections();
+      selectedProduct = JSON.parse(selectedOption.dataset.product);
+      localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct)); // Store in local storage
+      await loadProductDetails();
+      showProductSections();
     } else {
-        hideProductSections();
+      hideProductSections();
     }
-}
+  }
 
-// Load product details
-async function loadProductDetails() {
+  // Load product details
+  async function loadProductDetails() {
     try {
-        showNotification('info', 'Loading product details...');
-        
-        const response = await fetch(`${API_BASE_URL}/api/products/${selectedProduct.id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            mode: 'cors'
-        });
-        const data = await response.json();
-        selectedProduct = data.product;
+      showNotification("info", "Loading product details...");
 
-        displayProductInfo();
-        loadExistingMediaFromMetafields();
-        loadExistingThumbnails();
-        displayVariants();
+      const response = await fetch(
+        `${API_BASE_URL}/api/products/${selectedProduct.id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "cors",
+        }
+      );
+      const data = await response.json();
+      selectedProduct = data.product;
 
-        showNotification('success', 'Product details loaded successfully');
-
+      displayProductInfo();
+      loadExistingMediaFromMetafields();
+      loadExistingThumbnails();
+      displayVariants();
+      await loadAllProductMedia(); // Load both metafield and default media
+      showNotification("success", "Product details loaded successfully");
     } catch (error) {
-        showNotification('error', `Failed to load product details: ${error.message}`);
+      showNotification(
+        "error",
+        `Failed to load product details: ${error.message}`
+      );
     }
-}
+  }
 
-
-// Delete all media function
-async function deleteAllMedia() {
-    if (!selectedProduct) {
-        showNotification('error', 'Please select a product first');
-        return;
-    }
-
-    if (currentMedia.length === 0) {
-        showNotification('info', 'No media to delete');
-        return;
-    }
-
-    // Show confirmation dialog
-    const confirmMessage = `Are you sure you want to delete ALL ${currentMedia.length} media files? This action cannot be undone.`;
-    if (!confirm(confirmMessage)) {
-        return;
-    }
-
-    setButtonLoading('deleteAllMediaBtn', true);
-    
+  // Load existing media from product metafields
+  async function loadExistingMediaFromMetafields() {
     try {
-        showNotification('info', `Deleting ${currentMedia.length} media files...`);
+      console.log("Loading media from product metafields...");
 
-        const response = await fetch(`${API_BASE_URL}/api/media/delete-all-from-shopify`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                productId: selectedProduct.id,
-                mediaUrls: currentMedia.map(media => media.secure_url || media.url)
-            }),
-            mode: 'cors'
-        });
+      const mediaMetafield = selectedProduct.metafields?.find(
+        (mf) => mf.namespace === "custom" && mf.key === "media_url"
+      );
 
-        const result = await response.json();
-        console.log('Delete all response:', result);
-        
-        if (result.success) {
-            showNotification('success', `Successfully deleted ${result.deletedCount} media files`);
-            await loadProductDetails(); // Refresh the product data
-        } else {
-            throw new Error(result.error || 'Delete all failed');
-        }
-    } catch (error) {
-        console.error('Delete all error:', error);
-        showNotification('error', `Delete all failed: ${error.message}`);
-    } finally {
-        setButtonLoading('deleteAllMediaBtn', false);
-    }
-}
+      if (mediaMetafield && mediaMetafield.value) {
+        try {
+          let mediaUrls = [];
 
-// Update the DOMContentLoaded event listener to include the delete all button
-document.addEventListener('DOMContentLoaded', function() {
-    // ... existing event listeners ...
-
-    // Add delete all media button event listener
-    const deleteAllBtn = document.getElementById('deleteAllMediaBtn');
-    if (deleteAllBtn) {
-        deleteAllBtn.type = 'button';
-        deleteAllBtn.onclick = function(e) {
-            e.preventDefault();
-            deleteAllMedia();
-            return false;
-        };
-    }
-});
-
-// Update the showProductSections function to show/hide the delete all button
-function showProductSections() {
-    document.getElementById('uploadSection').style.display = 'block';
-    document.getElementById('mediaSection').style.display = 'block';
-    document.getElementById('thumbnailSection').style.display = 'block';
-    document.getElementById('variantsSection').style.display = 'block';
-    
-    // Show/hide delete all button based on media availability
-    updateDeleteAllButtonVisibility();
-}
-
-// Function to update delete all button visibility
-function updateDeleteAllButtonVisibility() {
-    const deleteAllBtn = document.getElementById('deleteAllMediaBtn');
-    if (deleteAllBtn) {
-        if (currentMedia && currentMedia.length > 0) {
-            deleteAllBtn.style.display = 'flex';
-        } else {
-            deleteAllBtn.style.display = 'none';
-        }
-    }
-}
-
-// Display media grid (Updated for direct CDN URLs)
-function displayMedia() {
-    const mediaGrid = document.getElementById('mediaGrid');
-    
-    if (currentMedia.length === 0) {
-        mediaGrid.innerHTML = '<p>No media uploaded yet.</p>';
-        updateDeleteAllButtonVisibility();
-        return;
-    }
-
-    console.log('Displaying media:', currentMedia);
-
-    let mediaHTML = '';
-    currentMedia.forEach((media, index) => {
-        const isVideo = media.resource_type === 'video';
-        const mediaUrl = media.secure_url || media.url;
-        
-        console.log(`Media ${index}:`, { isVideo, mediaUrl, resource_type: media.resource_type });
-        
-        let mediaElement;
-        
-        if (isVideo) {
-            // For videos stored as product images, we get CDN URLs
-            // Check if it's a proper CDN URL
-            const isCdnUrl = mediaUrl.includes('cdn.shopify.com') || mediaUrl.includes('.myshopify.com');
-            
-            if (isCdnUrl) {
-                // Try to display as video first, with fallback options
-                mediaElement = `
-                    <div class="video-container" style="position: relative;">
-                        <video controls style="max-width: 100%; height: 200px;" preload="metadata" 
-                               onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <source src="${mediaUrl}" type="video/mp4">
-                            <source src="${mediaUrl}" type="video/webm">
-                            <source src="${mediaUrl}" type="video/mov">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="video-fallback" style="display: none; width: 100%; height: 200px; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 8px;">
-                            <i class="fas fa-video" style="font-size: 48px; color: #666; margin-bottom: 10px;"></i>
-                            <p style="margin: 0; color: #666; font-weight: bold;">Video File</p>
-                            <small style="color: #999; text-align: center; margin: 5px 0;">Stored as CDN file</small>
-                            <div style="margin-top: 10px;">
-                                <a href="${mediaUrl}" target="_blank" download style="color: #007bff; text-decoration: none; margin-right: 10px;">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                                <a href="${mediaUrl}" target="_blank" style="color: #007bff; text-decoration: none;">
-                                    <i class="fas fa-external-link-alt"></i> Open
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                // For non-CDN URLs, show placeholder
-                mediaElement = `
-                    <div class="video-placeholder" style="width: 100%; height: 200px; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 8px;">
-                        <i class="fas fa-video" style="font-size: 48px; color: #666; margin-bottom: 10px;"></i>
-                        <p style="margin: 0; color: #666; font-weight: bold;">Video Reference</p>
-                        <small style="color: #999; text-align: center; margin: 5px 0;">Not directly playable</small>
-                        <a href="${mediaUrl}" target="_blank" style="margin-top: 10px; color: #007bff; text-decoration: none;">
-                            <i class="fas fa-external-link-alt"></i> View Reference
-                        </a>
-                    </div>
-                `;
+          // Handle different value formats
+          if (Array.isArray(mediaMetafield.value)) {
+            mediaUrls = mediaMetafield.value;
+          } else if (typeof mediaMetafield.value === "string") {
+            try {
+              mediaUrls = JSON.parse(mediaMetafield.value);
+            } catch (parseError) {
+              mediaUrls = [mediaMetafield.value];
             }
-        } else {
-            mediaElement = `
-                <img src="${mediaUrl}" alt="Product media" style="max-width: 100%; height: 200px; object-fit: contain;" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div style="display:none; padding: 20px; background: #f5f5f5; text-align: center;">
-                    <i class="fas fa-exclamation-triangle"></i> Image failed to load
+          }
+
+          console.log("Found media URLs:", mediaUrls);
+
+          // Convert URLs to media objects for display
+          currentMetafieldMedia = mediaUrls.map((url) => ({
+            url: url,
+            secure_url: url,
+            public_id: extractPublicIdFromUrl(url),
+            resource_type: determineResourceType(url),
+            source: "metafield",
+          }));
+
+          console.log(
+            "Processed metafield media objects:",
+            currentMetafieldMedia
+          );
+        } catch (parseError) {
+          console.error("Failed to parse media URLs:", parseError);
+          currentMetafieldMedia = [];
+        }
+      } else {
+        console.log("No media_url metafield found");
+        currentMetafieldMedia = [];
+      }
+
+      displayMetafieldMedia();
+    } catch (error) {
+      console.error("Failed to load existing media from metafields:", error);
+      currentMetafieldMedia = [];
+      displayMetafieldMedia();
+    }
+  }
+
+  // Load existing thumbnails
+  function loadExistingThumbnails() {
+    try {
+      console.log("Loading existing thumbnails...");
+
+      const thumbnailMetafield = selectedProduct.metafields?.find(
+        (mf) => mf.namespace === "custom" && mf.key === "thumbnail_images"
+      );
+
+      if (thumbnailMetafield && thumbnailMetafield.value) {
+        try {
+          let thumbnailUrls = [];
+
+          if (Array.isArray(thumbnailMetafield.value)) {
+            thumbnailUrls = thumbnailMetafield.value;
+          } else if (typeof thumbnailMetafield.value === "string") {
+            try {
+              thumbnailUrls = JSON.parse(thumbnailMetafield.value);
+            } catch (parseError) {
+              thumbnailUrls = [thumbnailMetafield.value];
+            }
+          }
+
+          console.log("Found thumbnail URLs:", thumbnailUrls);
+
+          document.getElementById("thumbnail1").value = thumbnailUrls[0] || "";
+          document.getElementById("thumbnail2").value = thumbnailUrls[1] || "";
+
+          updateThumbnailPreview(1, thumbnailUrls[0] || "");
+          updateThumbnailPreview(2, thumbnailUrls[1] || "");
+
+          thumbnailImages = [thumbnailUrls[0] || "", thumbnailUrls[1] || ""];
+        } catch (parseError) {
+          console.error("Failed to parse thumbnail URLs:", parseError);
+          clearAllThumbnails();
+        }
+      } else {
+        console.log("No thumbnail_images metafield found");
+        clearAllThumbnails();
+      }
+    } catch (error) {
+      console.error("Failed to load existing thumbnails:", error);
+      clearAllThumbnails();
+    }
+  }
+
+  // Load all product media
+  async function loadAllProductMedia() {
+    if (!selectedProduct) return;
+
+    try {
+      // Load metafield media
+      await loadMetafieldMedia();
+
+      // Load default product media
+      await loadDefaultProductMedia();
+    } catch (error) {
+      console.error("Error loading product media:", error);
+      showNotification("error", "Failed to load product media");
+    }
+  }
+
+  // Load default product media from main store (CORRECTED - No Duplicates)
+  async function loadDefaultProductMedia() {
+    try {
+      console.log("Loading default product media...");
+
+      // First, get fresh product data to ensure we have all media
+      const response = await fetch(
+        `${API_BASE_URL}/api/products/${selectedProduct.id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "cors",
+        }
+      );
+      const data = await response.json();
+      const freshProduct = data.product;
+
+      currentDefaultMedia = [];
+      const processedIds = new Set(); // Track processed items to avoid duplicates
+
+      // Process media first (videos, 3D models, external videos)
+      if (freshProduct.media && freshProduct.media.length > 0) {
+        freshProduct.media.forEach((mediaItem) => {
+          let mediaUrl = null;
+          let resourceType = "image";
+          let mediaId = mediaItem.id;
+
+          // Skip if already processed
+          if (processedIds.has(mediaId)) {
+            return;
+          }
+
+          // Determine media type and URL
+          if (mediaItem.media_type === "VIDEO") {
+            resourceType = "video";
+            // Try to get video URL from sources
+            if (mediaItem.sources && mediaItem.sources.length > 0) {
+              const mp4Source = mediaItem.sources.find(
+                (source) => source.format === "mp4"
+              );
+              mediaUrl = mp4Source ? mp4Source.url : mediaItem.sources[0].url;
+            } else if (
+              mediaItem.original_source &&
+              mediaItem.original_source.url
+            ) {
+              mediaUrl = mediaItem.original_source.url;
+            } else if (mediaItem.preview_image && mediaItem.preview_image.url) {
+              // Fallback to preview image for videos that aren't processed yet
+              mediaUrl = mediaItem.preview_image.url;
+              resourceType = "image"; // Treat as image since we only have preview
+            }
+          } else if (mediaItem.media_type === "IMAGE") {
+            resourceType = "image";
+            if (mediaItem.image && mediaItem.image.url) {
+              mediaUrl = mediaItem.image.url;
+            } else if (
+              mediaItem.original_source &&
+              mediaItem.original_source.url
+            ) {
+              mediaUrl = mediaItem.original_source.url;
+            }
+          } else if (mediaItem.media_type === "EXTERNAL_VIDEO") {
+            resourceType = "video";
+            mediaUrl = mediaItem.external_url || mediaItem.url;
+          } else if (mediaItem.media_type === "MODEL_3D") {
+            resourceType = "model";
+            if (mediaItem.sources && mediaItem.sources.length > 0) {
+              mediaUrl = mediaItem.sources[0].url;
+            } else if (
+              mediaItem.original_source &&
+              mediaItem.original_source.url
+            ) {
+              mediaUrl = mediaItem.original_source.url;
+            }
+          }
+
+          if (mediaUrl) {
+            currentDefaultMedia.push({
+              id: mediaId,
+              url: mediaUrl,
+              secure_url: mediaUrl,
+              alt: mediaItem.alt || freshProduct.title,
+              resource_type: resourceType,
+              source: "default",
+              media_type: mediaItem.media_type,
+            });
+
+            processedIds.add(mediaId);
+
+            // Also track the URL to avoid duplicates from images array
+            processedIds.add(mediaUrl);
+          }
+        });
+      }
+
+      // Process regular images (only if not already processed via media)
+      if (freshProduct.images && freshProduct.images.length > 0) {
+        freshProduct.images.forEach((image) => {
+          // Skip if this image URL was already processed via media
+          if (!processedIds.has(image.src) && !processedIds.has(image.id)) {
+            currentDefaultMedia.push({
+              id: image.id,
+              url: image.src,
+              secure_url: image.src,
+              alt: image.alt || freshProduct.title,
+              resource_type: "image",
+              source: "default",
+              media_type: "IMAGE",
+            });
+
+            processedIds.add(image.id);
+            processedIds.add(image.src);
+          }
+        });
+      }
+
+      console.log("Loaded default media (no duplicates):", currentDefaultMedia);
+      displayDefaultMedia();
+    } catch (error) {
+      console.error("Failed to load default product media:", error);
+      currentDefaultMedia = [];
+      displayDefaultMedia();
+    }
+  }
+
+  // Create media item HTML (UPDATED with better type handling)
+  function createMediaItemHTML(media, index, source) {
+    const isVideo = media.resource_type === "video";
+    const isModel = media.resource_type === "model";
+    const mediaUrl = media.secure_url || media.url;
+
+    let mediaElement;
+
+    if (isVideo) {
+      // Check if it's a direct video URL or needs special handling
+      const isDirectVideoUrl =
+        mediaUrl.includes(".mp4") ||
+        mediaUrl.includes(".webm") ||
+        mediaUrl.includes(".mov") ||
+        mediaUrl.includes("cdn.shopify.com") ||
+        !mediaUrl.includes("googleapis.com");
+
+      if (isDirectVideoUrl) {
+        mediaElement = `
+                <video controls style="max-width: 100%; height: 200px;" preload="metadata">
+                    <source src="${mediaUrl}" type="video/mp4">
+                    <source src="${mediaUrl}" type="video/webm">
+                    <source src="${mediaUrl}" type="video/mov">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+      } else {
+        // For non-direct URLs (like googleapis.com references)
+        mediaElement = `
+                <div class="video-placeholder" style="width: 100%; height: 200px; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 8px;">
+                    <i class="fas fa-video" style="font-size: 48px; color: #666; margin-bottom: 10px;"></i>
+                    <p style="margin: 0; color: #666; font-weight: bold;">Video File</p>
+                    <small style="color: #999; text-align: center; margin: 5px 0;">
+                        ${
+                          media.media_type === "EXTERNAL_VIDEO"
+                            ? "External Video"
+                            : "Video Processing"
+                        }
+                    </small>
+                    <a href="${mediaUrl}" target="_blank" style="margin-top: 10px; color: #007bff; text-decoration: none;">
+                        <i class="fas fa-external-link-alt"></i> Open Video
+                    </a>
                 </div>
             `;
-        }
-
-        // Add file type indicator with CDN status
-        const isCdnUrl = mediaUrl.includes('cdn.shopify.com') || mediaUrl.includes('.myshopify.com');
-        const typeIndicator = isVideo 
-            ? `<span class="media-type-badge video-badge"><i class="fas fa-play"></i> Video ${isCdnUrl ? '(CDN)' : '(Ref)'}</span>`
-            : '<span class="media-type-badge image-badge"><i class="fas fa-image"></i> Image</span>';
-
-        mediaHTML += `
-            <div class="media-item" data-index="${index}" style="margin-bottom: 20px;">
-                <div class="media-content">
-                    ${mediaElement}
-                    ${typeIndicator}
-                </div>
-                <div class="media-info">
-                    <small>Type: ${isVideo ? 'Video' : 'Image'} ${isCdnUrl ? '(CDN URL)' : '(Reference URL)'}</small>
-                    <br>
-                    <small style="word-break: break-all; color: #666;">
-                        ${mediaUrl.length > 60 ? mediaUrl.substring(0, 60) + '...' : mediaUrl}
-                    </small>
-                </div>
-                <div class="media-actions">
-                    <button class="btn-small btn-info copy-btn" onclick="copyURL('${mediaUrl}', this)" data-url="${mediaUrl}">
-                        <span class="copy-text">
-                            <i class="fas fa-copy"></i> Copy URL
-                        </span>
-                        <span class="copied-text" style="display: none;">
-                            <i class="fas fa-check"></i> Copied!
-                        </span>
-                    </button>
-                    <button class="btn-small btn-danger" onclick="deleteMediaByUrl('${mediaUrl}')">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                    <button class="btn-small btn-secondary" onclick="window.open('${mediaUrl}', '_blank')" title="Open in new tab">
-                        <i class="fas fa-external-link-alt"></i> Open
-                    </button>
-                </div>
+      }
+    } else if (isModel) {
+      mediaElement = `
+            <div class="model-placeholder" style="width: 100%; height: 200px; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 8px;">
+                <i class="fas fa-cube" style="font-size: 48px; color: #666; margin-bottom: 10px;"></i>
+                <p style="margin: 0; color: #666; font-weight: bold;">3D Model</p>
+                <small style="color: #999; text-align: center; margin: 5px 0;">3D Model File</small>
+                <a href="${mediaUrl}" target="_blank" style="margin-top: 10px; color: #007bff; text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> Open Model
+                </a>
             </div>
         `;
+    } else {
+      mediaElement = `
+            <img src="${mediaUrl}" alt="Product media" style="max-width: 100%; height: 200px; object-fit: contain;" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; padding: 20px; background: #f5f5f5; text-align: center;">
+                <i class="fas fa-exclamation-triangle"></i> Image failed to load
+            </div>
+        `;
+    }
+
+    const typeIndicator = isVideo
+      ? '<span class="media-type-badge video-badge"><i class="fas fa-play"></i> Video</span>'
+      : isModel
+      ? '<span class="media-type-badge model-badge"><i class="fas fa-cube"></i> 3D Model</span>'
+      : '<span class="media-type-badge image-badge"><i class="fas fa-image"></i> Image</span>';
+
+    const sourceIndicator =
+      source === "metafield"
+        ? '<span class="media-source-badge metafield-badge">External</span>'
+        : '<span class="media-source-badge default-badge">Default</span>';
+
+    return `
+        <div class="media-item" data-index="${index}" data-source="${source}" style="margin-bottom: 20px;">
+            <div class="media-content">
+                ${mediaElement}
+                ${typeIndicator}
+                ${sourceIndicator}
+            </div>
+            <div class="media-info">
+                <small>Type: ${
+                  isVideo ? "Video" : isModel ? "3D Model" : "Image"
+                } | Source: ${
+      source === "metafield" ? "External Store" : "Main Store"
+    }</small>
+                ${
+                  media.media_type
+                    ? `<br><small>Media Type: ${media.media_type}</small>`
+                    : ""
+                }
+                <br>
+                <small style="word-break: break-all; color: #666;">
+                    ${
+                      mediaUrl.length > 60
+                        ? mediaUrl.substring(0, 60) + "..."
+                        : mediaUrl
+                    }
+                </small>
+            </div>
+            <div class="media-actions">
+                <button class="btn-small btn-info copy-btn" onclick="copyURL('${mediaUrl}', this)" data-url="${mediaUrl}">
+                    <span class="copy-text">
+                        <i class="fas fa-copy"></i> Copy URL
+                    </span>
+                    <span class="copied-text" style="display: none;">
+                        <i class="fas fa-check"></i> Copied!
+                    </span>
+                </button>
+                <button class="btn-small btn-danger" onclick="deleteMediaByUrl('${mediaUrl}', '${source}')">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="btn-small btn-secondary" onclick="window.open('${mediaUrl}', '_blank')" title="Open in new tab">
+                    <i class="fas fa-external-link-alt"></i> Open
+                </button>
+            </div>
+        </div>
+    `;
+  }
+
+  // Create media item HTML (UPDATED for better video handling)
+  function createMediaItemHTML(media, index, source) {
+    const isVideo = media.resource_type === "video";
+    const mediaUrl = media.secure_url || media.url;
+
+    let mediaElement;
+
+    if (isVideo) {
+      // Check if it's a direct video URL or needs special handling
+      const isDirectVideoUrl =
+        mediaUrl.includes(".mp4") ||
+        mediaUrl.includes(".webm") ||
+        mediaUrl.includes(".mov") ||
+        mediaUrl.includes("cdn.shopify.com") ||
+        !mediaUrl.includes("googleapis.com");
+
+      if (isDirectVideoUrl) {
+        mediaElement = `
+                <video controls style="max-width: 100%; height: 200px;" preload="metadata">
+                    <source src="${mediaUrl}" type="video/mp4">
+                    <source src="${mediaUrl}" type="video/webm">
+                    <source src="${mediaUrl}" type="video/mov">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+      } else {
+        // For non-direct URLs (like googleapis.com references)
+        mediaElement = `
+                <div class="video-placeholder" style="width: 100%; height: 200px; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #ccc; border-radius: 8px;">
+                    <i class="fas fa-video" style="font-size: 48px; color: #666; margin-bottom: 10px;"></i>
+                    <p style="margin: 0; color: #666; font-weight: bold;">Video File</p>
+                    <small style="color: #999; text-align: center; margin: 5px 0;">
+                        ${
+                          media.media_type === "EXTERNAL_VIDEO"
+                            ? "External Video"
+                            : "Video Processing"
+                        }
+                    </small>
+                    <a href="${mediaUrl}" target="_blank" style="margin-top: 10px; color: #007bff; text-decoration: none;">
+                        <i class="fas fa-external-link-alt"></i> Open Video
+                    </a>
+                </div>
+            `;
+      }
+    } else {
+      mediaElement = `
+            <img src="${mediaUrl}" alt="Product media" style="max-width: 100%; height: 200px; object-fit: contain;" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; padding: 20px; background: #f5f5f5; text-align: center;">
+                <i class="fas fa-exclamation-triangle"></i> Image failed to load
+            </div>
+        `;
+    }
+
+    const typeIndicator = isVideo
+      ? '<span class="media-type-badge video-badge"><i class="fas fa-play"></i> Video</span>'
+      : '<span class="media-type-badge image-badge"><i class="fas fa-image"></i> Image</span>';
+
+    const sourceIndicator =
+      source === "metafield"
+        ? '<span class="media-source-badge metafield-badge">External</span>'
+        : '<span class="media-source-badge default-badge">Default</span>';
+
+    return `
+        <div class="media-item" data-index="${index}" data-source="${source}" style="margin-bottom: 20px;">
+            <div class="media-content">
+                ${mediaElement}
+                ${typeIndicator}
+                ${sourceIndicator}
+            </div>
+            <div class="media-info">
+                <small>Type: ${isVideo ? "Video" : "Image"} | Source: ${
+      source === "metafield" ? "External Store" : "Main Store"
+    }</small>
+                ${
+                  media.media_type
+                    ? `<br><small>Media Type: ${media.media_type}</small>`
+                    : ""
+                }
+                <br>
+                <small style="word-break: break-all; color: #666;">
+                    ${
+                      mediaUrl.length > 60
+                        ? mediaUrl.substring(0, 60) + "..."
+                        : mediaUrl
+                    }
+                </small>
+            </div>
+            <div class="media-actions">
+                <button class="btn-small btn-info copy-btn" onclick="copyURL('${mediaUrl}', this)" data-url="${mediaUrl}">
+                    <span class="copy-text">
+                        <i class="fas fa-copy"></i> Copy URL
+                    </span>
+                    <span class="copied-text" style="display: none;">
+                        <i class="fas fa-check"></i> Copied!
+                    </span>
+                </button>
+                <button class="btn-small btn-danger" onclick="deleteMediaByUrl('${mediaUrl}', '${source}')">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="btn-small btn-secondary" onclick="window.open('${mediaUrl}', '_blank')" title="Open in new tab">
+                    <i class="fas fa-external-link-alt"></i> Open
+                </button>
+            </div>
+        </div>
+    `;
+  }
+
+  // Load metafield media from external store
+  async function loadMetafieldMedia() {
+    try {
+      console.log("Loading metafield media...");
+
+      const mediaMetafield = selectedProduct.metafields?.find(
+        (mf) => mf.namespace === "custom" && mf.key === "media_url"
+      );
+
+      if (mediaMetafield && mediaMetafield.value) {
+        let mediaUrls = [];
+
+        if (Array.isArray(mediaMetafield.value)) {
+          mediaUrls = mediaMetafield.value;
+        } else if (typeof mediaMetafield.value === "string") {
+          try {
+            mediaUrls = JSON.parse(mediaMetafield.value);
+          } catch (parseError) {
+            mediaUrls = [mediaMetafield.value];
+          }
+        }
+
+        currentMetafieldMedia = mediaUrls.map((url) => ({
+          url: url,
+          secure_url: url,
+          public_id: extractPublicIdFromUrl(url),
+          resource_type: determineResourceType(url),
+          source: "metafield",
+        }));
+      } else {
+        currentMetafieldMedia = [];
+      }
+
+      displayMetafieldMedia();
+    } catch (error) {
+      console.error("Failed to load metafield media:", error);
+      currentMetafieldMedia = [];
+      displayMetafieldMedia();
+    }
+  }
+
+  // Display metafield media
+  function displayMetafieldMedia() {
+    const mediaGrid = document.getElementById("metafieldMediaGrid");
+
+    if (currentMetafieldMedia.length === 0) {
+      mediaGrid.innerHTML =
+        '<p style="color: #666; font-style: italic;">No metafield media uploaded yet.</p>';
+      updateDeleteAllButtonVisibility("metafield");
+      return;
+    }
+
+    let mediaHTML = "";
+    currentMetafieldMedia.forEach((media, index) => {
+      mediaHTML += createMediaItemHTML(media, index, "metafield");
     });
 
     mediaGrid.innerHTML = mediaHTML;
-    updateDeleteAllButtonVisibility();
-}
+    updateDeleteAllButtonVisibility("metafield");
+  }
 
+  // Display default product media
+  function displayDefaultMedia() {
+    const mediaGrid = document.getElementById("defaultMediaGrid");
 
+    if (currentDefaultMedia.length === 0) {
+      mediaGrid.innerHTML =
+        '<p style="color: #666; font-style: italic;">No default product media found.</p>';
+      updateDeleteAllButtonVisibility("default");
+      return;
+    }
 
+    let mediaHTML = "";
+    currentDefaultMedia.forEach((media, index) => {
+      mediaHTML += createMediaItemHTML(media, index, "default");
+    });
 
-// Display product info
-function displayProductInfo() {
-    const productInfo = document.getElementById('productInfo');
-    const sku = selectedProduct.variants[0]?.sku || 'No SKU';
-    
+    mediaGrid.innerHTML = mediaHTML;
+    updateDeleteAllButtonVisibility("default");
+  }
+
+  // Create media item HTML
+  function createMediaItemHTML(media, index, source) {
+    const isVideo = media.resource_type === "video";
+    const mediaUrl = media.secure_url || media.url;
+
+    const mediaElement = isVideo
+      ? `<video controls style="max-width: 100%; height: 200px;" preload="metadata">
+             <source src="${mediaUrl}" type="video/mp4">
+             <source src="${mediaUrl}" type="video/webm">
+             <source src="${mediaUrl}" type="video/mov">
+             Your browser does not support the video tag.
+           </video>`
+      : `<img src="${mediaUrl}" alt="Product media" style="max-width: 100%; height: auto; object-fit: contain;" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+           <div style="display:none; padding: 20px; background: #f5f5f5; text-align: center;">
+             <i class="fas fa-exclamation-triangle"></i> Image failed to load
+           </div>`;
+
+    const typeIndicator = isVideo
+      ? '<span class="media-type-badge video-badge"><i class="fas fa-play"></i> Video</span>'
+      : '<span class="media-type-badge image-badge"><i class="fas fa-image"></i> Image</span>';
+
+    const sourceIndicator =
+      source === "metafield"
+        ? '<span class="media-source-badge metafield-badge">External</span>'
+        : '<span class="media-source-badge default-badge">Default</span>';
+
+    return `
+        <div class="media-item" data-index="${index}" data-source="${source}" style="margin-bottom: 20px;">
+            <div class="media-content">
+                ${mediaElement}
+                ${typeIndicator}
+                ${sourceIndicator}
+            </div>
+            <div class="media-info">
+                <small>Type: ${isVideo ? "Video" : "Image"} | Source: ${
+      source === "metafield" ? "External Store" : "Main Store"
+    }</small>
+                <br>
+                <small style="word-break: break-all; color: #666;">
+                    ${
+                      mediaUrl.length > 60
+                        ? mediaUrl.substring(0, 60) + "..."
+                        : mediaUrl
+                    }
+                </small>
+            </div>
+            <div class="media-actions">
+                <button class="btn-small btn-info copy-btn" onclick="copyURL('${mediaUrl}', this)" data-url="${mediaUrl}">
+                    <span class="copy-text">
+                        <i class="fas fa-copy"></i> Copy URL
+                    </span>
+                    <span class="copied-text" style="display: none;">
+                        <i class="fas fa-check"></i> Copied!
+                    </span>
+                </button>
+                <button class="btn-small btn-danger" onclick="deleteMediaByUrl('${mediaUrl}', '${source}')">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="btn-small btn-secondary" onclick="window.open('${mediaUrl}', '_blank')" title="Open in new tab">
+                    <i class="fas fa-external-link-alt"></i> Open
+                </button>
+            </div>
+        </div>
+    `;
+  }
+
+  // Update delete all button visibility
+  function updateDeleteAllButtonVisibility(source) {
+    const buttonId =
+      source === "metafield"
+        ? "deleteAllMetafieldMediaBtn"
+        : "deleteAllDefaultMediaBtn";
+    const button = document.getElementById(buttonId);
+    const mediaCount =
+      source === "metafield"
+        ? currentMetafieldMedia.length
+        : currentDefaultMedia.length;
+
+    if (button) {
+      button.style.display = mediaCount > 0 ? "flex" : "none";
+    }
+  }
+
+  // Delete media by URL with source
+  async function deleteMediaByUrl(mediaUrl, source) {
+    if (!confirm("Are you sure you want to delete this media?")) {
+      return;
+    }
+
+    try {
+      showNotification("info", "Deleting media...");
+
+      const endpoint =
+        source === "metafield"
+          ? `${API_BASE_URL}/api/media/delete-from-shopify`
+          : `${API_BASE_URL}/api/products/${selectedProduct.id}/delete-default-media`;
+
+      const response = await fetch(endpoint, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mediaUrl: mediaUrl,
+          productId: selectedProduct.id,
+        }),
+        mode: "cors",
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        showNotification("success", "Media deleted successfully");
+
+        // Update UI immediately
+        if (source === "metafield") {
+          currentMetafieldMedia = currentMetafieldMedia.filter(
+            (media) => (media.secure_url || media.url) !== mediaUrl
+          );
+          displayMetafieldMedia();
+        } else {
+          currentDefaultMedia = currentDefaultMedia.filter(
+            (media) => (media.secure_url || media.url) !== mediaUrl
+          );
+          displayDefaultMedia();
+        }
+
+        // Reload product details to ensure consistency
+        await loadProductDetails();
+      } else {
+        throw new Error(result.error || "Delete failed");
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+      showNotification("error", `Delete failed: ${error.message}`);
+    }
+  }
+
+  // Delete all metafield media
+  async function deleteAllMetafieldMedia() {
+    if (!selectedProduct || currentMetafieldMedia.length === 0) {
+      showNotification("info", "No metafield media to delete");
+      return;
+    }
+
+    const confirmMessage = `Are you sure you want to delete ALL ${currentMetafieldMedia.length} metafield media files? This action cannot be undone.`;
+    if (!confirm(confirmMessage)) {
+      return;
+    }
+
+    setButtonLoading("deleteAllMetafieldMediaBtn", true);
+
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/api/media/delete-all-from-shopify`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            productId: selectedProduct.id,
+            mediaUrls: currentMetafieldMedia.map(
+              (media) => media.secure_url || media.url
+            ),
+          }),
+          mode: "cors",
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        showNotification(
+          "success",
+          `Successfully deleted ${result.deletedCount} metafield media files`
+        );
+
+        // Update UI immediately
+        currentMetafieldMedia = [];
+        displayMetafieldMedia();
+
+        // Reload product details to ensure consistency
+        await loadProductDetails();
+      } else {
+        throw new Error(result.error || "Delete all failed");
+      }
+    } catch (error) {
+      console.error("Delete all metafield media error:", error);
+      showNotification("error", `Delete all failed: ${error.message}`);
+    } finally {
+      setButtonLoading("deleteAllMetafieldMediaBtn", false);
+    }
+  }
+
+  // Delete all default media
+  async function deleteAllDefaultMedia() {
+    if (!selectedProduct || currentDefaultMedia.length === 0) {
+      showNotification("info", "No default media to delete");
+      return;
+    }
+
+    const confirmMessage = `Are you sure you want to delete ALL ${currentDefaultMedia.length} default media files? This action cannot be undone.`;
+    if (!confirm(confirmMessage)) {
+      return;
+    }
+
+    setButtonLoading("deleteAllDefaultMediaBtn", true);
+
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/api/products/${selectedProduct.id}/delete-all-default-media`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          mode: "cors",
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        showNotification(
+          "success",
+          `Successfully deleted ${result.deletedCount} default media files`
+        );
+
+        // Update UI immediately
+        currentDefaultMedia = [];
+        displayDefaultMedia();
+
+        // Reload product details to ensure consistency
+        await loadProductDetails();
+      } else {
+        throw new Error(result.error || "Delete all failed");
+      }
+    } catch (error) {
+      console.error("Delete all default media error:", error);
+      showNotification("error", `Delete all failed: ${error.message}`);
+    } finally {
+      setButtonLoading("deleteAllDefaultMediaBtn", false);
+    }
+  }
+
+  // Display product info
+  function displayProductInfo() {
+    const productInfo = document.getElementById("productInfo");
+    const sku = selectedProduct.variants[0]?.sku || "No SKU";
+
     productInfo.innerHTML = `
         <h4>${selectedProduct.title}</h4>
         <p><strong>SKU:</strong> ${sku}</p>
         <p><strong>Variants:</strong> ${selectedProduct.variants.length}</p>
         <p><strong>Handle:</strong> ${selectedProduct.handle}</p>
     `;
-    productInfo.style.display = 'block';
-}
+    productInfo.style.display = "block";
+  }
 
-// Load existing media from product metafields (Updated for JSON string format)
-function loadExistingMediaFromMetafields() {
-    try {
-        console.log('Loading media from product metafields...');
-        
-        const mediaMetafield = selectedProduct.metafields?.find(
-            mf => mf.namespace === 'custom' && mf.key === 'media_url'
-        );
+  // Display variants with image previews
+  function displayVariants() {
+    const variantsList = document.getElementById("variantsList");
 
-        if (mediaMetafield && mediaMetafield.value) {
-            try {
-                let mediaUrls = [];
-                
-                // Always try to parse as JSON first (since we're storing as JSON string)
-                if (typeof mediaMetafield.value === 'string') {
-                    try {
-                        mediaUrls = JSON.parse(mediaMetafield.value);
-                    } catch (parseError) {
-                        // If not JSON, treat as single URL
-                        mediaUrls = [mediaMetafield.value];
-                    }
-                } else if (Array.isArray(mediaMetafield.value)) {
-                    // Already an array
-                    mediaUrls = mediaMetafield.value;
-                }
-                
-                console.log('Found media URLs:', mediaUrls);
-                
-                // Convert URLs to media objects for display
-                currentMedia = mediaUrls.map(url => ({
-                    url: url,
-                    secure_url: url,
-                    public_id: extractPublicIdFromUrl(url),
-                    resource_type: determineResourceType(url)
-                }));
-                
-                console.log('Processed media objects:', currentMedia);
-            } catch (parseError) {
-                console.error('Failed to parse media URLs:', parseError);
-                currentMedia = [];
-            }
-        } else {
-            console.log('No media_url metafield found');
-            currentMedia = [];
-        }
-
-        displayMedia();
-    } catch (error) {
-        console.error('Failed to load existing media from metafields:', error);
-        currentMedia = [];
-        displayMedia();
-    }
-}
-
-
-// Load existing thumbnails (Updated for JSON string format)
-function loadExistingThumbnails() {
-    try {
-        console.log('Loading existing thumbnails...');
-        
-        // Find the thumbnail_images metafield
-        const thumbnailMetafield = selectedProduct.metafields?.find(
-            mf => mf.namespace === 'custom' && mf.key === 'thumbnail_images'
-        );
-
-        if (thumbnailMetafield && thumbnailMetafield.value) {
-            try {
-                let thumbnailUrls = [];
-                
-                // Handle different value formats
-                if (Array.isArray(thumbnailMetafield.value)) {
-                    // Already parsed as array (from backend processing)
-                    thumbnailUrls = thumbnailMetafield.value;
-                } else if (typeof thumbnailMetafield.value === 'string') {
-                    try {
-                        // Try to parse as JSON
-                        thumbnailUrls = JSON.parse(thumbnailMetafield.value);
-                    } catch (parseError) {
-                        // If not JSON, treat as single URL
-                        thumbnailUrls = [thumbnailMetafield.value];
-                    }
-                }
-                
-                console.log('Found thumbnail URLs:', thumbnailUrls);
-                
-                // Ensure it's an array and load into input fields
-                if (Array.isArray(thumbnailUrls)) {
-                    document.getElementById('thumbnail1').value = thumbnailUrls[0] || '';
-                    document.getElementById('thumbnail2').value = thumbnailUrls[1] || '';
-                    
-                    // Update previews
-                    updateThumbnailPreview(1, thumbnailUrls[0] || '');
-                    updateThumbnailPreview(2, thumbnailUrls[1] || '');
-                    
-                    thumbnailImages = [thumbnailUrls[0] || '', thumbnailUrls[1] || ''];
-                } else {
-                    console.warn('Thumbnail URLs is not an array:', thumbnailUrls);
-                    clearAllThumbnails();
-                }
-                
-            } catch (parseError) {
-                console.error('Failed to parse thumbnail URLs:', parseError);
-                console.log('Raw value:', thumbnailMetafield.value);
-                clearAllThumbnails();
-            }
-        } else {
-            console.log('No thumbnail_images metafield found');
-            clearAllThumbnails();
-        }
-    } catch (error) {
-        console.error('Failed to load existing thumbnails:', error);
-        clearAllThumbnails();
-    }
-}
-
-
-// Helper function to extract public ID from URL
-function extractPublicIdFromUrl(url) {
-    try {
-        const parts = url.split('/');
-        const filename = parts[parts.length - 1];
-        return filename.replace(/\.[^/.]+$/, '');
-    } catch (error) {
-        console.error('Error extracting public ID:', error);
-        return url;
-    }
-}
-
-// Helper function to determine resource type from URL
-function determineResourceType(url) {
-    if (url.includes('.mp4') || 
-        url.includes('.mov') || 
-        url.includes('.avi') || 
-        url.includes('.webm') ||
-        url.includes('.mkv')) {
-        return 'video';
-    }
-    return 'image';
-}
-
-// Display media grid
-function displayMedia() {
-    const mediaGrid = document.getElementById('mediaGrid');
-    
-    if (currentMedia.length === 0) {
-        mediaGrid.innerHTML = '<p>No media uploaded yet.</p>';
-        return;
-    }
-
-    console.log('Displaying media:', currentMedia);
-
-    let mediaHTML = '';
-    currentMedia.forEach((media, index) => {
-        const isVideo = media.resource_type === 'video';
-        const mediaUrl = media.secure_url || media.url;
-        
-        const mediaElement = isVideo 
-            ? `<video src="${mediaUrl}" controls style="max-width: 100%; height: 200px !important;">
-                 <source src="${mediaUrl}" type="video/mp4">
-                 Your browser does not support the video tag.
-               </video>`
-            : `<img src="${mediaUrl}" alt="Product media" style="max-width: 100%;" 
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-               <div style="display:none; padding: 20px; background: #f5f5f5; text-align: center;">
-                 <i class="fas fa-exclamation-triangle"></i> Image failed to load
-               </div>`;
-
-        mediaHTML += `
-            <div class="media-item" data-index="${index}">
-                <div class="media-content">
-                    ${mediaElement}
-                </div>
-                <div class="media-info">
-                    <small>Type: ${isVideo ? 'Video' : 'Image'}</small>
-                </div>
-                <div class="media-actions">
-                    <button class="btn-small btn-info copy-btn" onclick="copyURL('${mediaUrl}', this)" data-url="${mediaUrl}">
-                        <span class="copy-text">
-                            <i class="fas fa-copy"></i> Copy URL
-                        </span>
-                        <span class="copied-text" style="display: none;">
-                            <i class="fas fa-check"></i> Copied!
-                        </span>
-                    </button>
-                    <button class="btn-small btn-danger" onclick="deleteMediaByUrl('${mediaUrl}')">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </div>
-            </div>
-        `;
-    });
-
-    mediaGrid.innerHTML = mediaHTML;
-}
-
-// Display variants with image previews
-function displayVariants() {
-    const variantsList = document.getElementById('variantsList');
-    
     if (!selectedProduct.variants || selectedProduct.variants.length === 0) {
-        variantsList.innerHTML = '<p>No variants found.</p>';
-        return;
+      variantsList.innerHTML = "<p>No variants found.</p>";
+      return;
     }
 
-    let variantsHTML = '';
-    selectedProduct.variants.forEach(variant => {
-        const currentImageURL = getVariantImageURL(variant);
-        
-        variantsHTML += `
+    let variantsHTML = "";
+    selectedProduct.variants.forEach((variant) => {
+      const currentImageURL = getVariantImageURL(variant);
+
+      variantsHTML += `
             <div class="variant-item">
                 <div class="variant-info">
-                    <div class="variant-image-preview" id="variant-preview-${variant.id}">
-                        ${currentImageURL ? `
+                    <div class="variant-image-preview" id="variant-preview-${
+                      variant.id
+                    }">
+                        ${
+                          currentImageURL
+                            ? `
                             <div class="variant-image-container">
                                 <img src="${currentImageURL}" 
                                      alt="Image for ${variant.title}" 
                                      style="max-width: 80px; height:80px; object-fit:contain; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
                                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <div style="display:none; padding: 10px; background: #f5f5f;   text-align: center; border-radius: 4px;">
+                                <div style="display:none; padding: 10px; background: #f5f5f5; text-align: center; border-radius: 4px;">
                                     <i class="fas fa-exclamation-triangle"></i> Image failed to load
                                 </div>
                             </div>
-                        ` : ''}
+                        `
+                            : ""
+                        }
                     </div>
                     <div>
                         <strong>${variant.title}</strong><br>
-                        <small>SKU: ${variant.sku || 'No SKU'}</small><br>
+                        <small>SKU: ${variant.sku || "No SKU"}</small><br>
                         <small>Price: $${variant.price}</small>
                     </div>
                 </div>
@@ -1403,7 +2144,9 @@ function displayVariants() {
                         class="variant-image-input" 
                         placeholder="Enter image URL for this variant..."
                         value="${currentImageURL}"
-                        onchange="updateVariantImage(${variant.id}, this.value, '${variant.title}')"
+                        onchange="updateVariantImage(${
+                          variant.id
+                        }, this.value, '${variant.title}')"
                         id="variant-input-${variant.id}"
                     >
                 </div>
@@ -1412,37 +2155,39 @@ function displayVariants() {
     });
 
     variantsList.innerHTML = variantsHTML;
-}
+  }
 
-// Get variant image URL from metafields
-function getVariantImageURL(variant) {
+  // Get variant image URL from metafields
+  function getVariantImageURL(variant) {
     if (variant.metafields) {
-        const imageMetafield = variant.metafields.find(
-            mf => mf.namespace === 'custom' && mf.key === 'variant_image'
-        );
-        return imageMetafield ? imageMetafield.value : '';
+      const imageMetafield = variant.metafields.find(
+        (mf) => mf.namespace === "custom" && mf.key === "variant_image"
+      );
+      return imageMetafield ? imageMetafield.value : "";
     }
-    return '';
-}
+    return "";
+  }
 
-// Update variant image in memory and preview
-function updateVariantImage(variantId, imageUrl, variantTitle) {
+  // Update variant image in memory and preview
+  function updateVariantImage(variantId, imageUrl, variantTitle) {
     variantChanges[variantId] = imageUrl;
-    document.getElementById('saveSection').style.display = 'block';
-    
-    updateVariantImagePreview(variantId, imageUrl, variantTitle);
-}
+    document.getElementById("saveSection").style.display = "block";
 
-// Update variant image preview
-function updateVariantImagePreview(variantId, imageUrl, variantTitle) {
-    const previewContainer = document.getElementById(`variant-preview-${variantId}`);
-    
-    if (imageUrl && imageUrl.trim() !== '') {
-        previewContainer.innerHTML = `
+    updateVariantImagePreview(variantId, imageUrl, variantTitle);
+  }
+
+  // Update variant image preview
+  function updateVariantImagePreview(variantId, imageUrl, variantTitle) {
+    const previewContainer = document.getElementById(
+      `variant-preview-${variantId}`
+    );
+
+    if (imageUrl && imageUrl.trim() !== "") {
+      previewContainer.innerHTML = `
             <div class="variant-image-container">
                 <img src="${imageUrl}" 
                      alt="Image for ${variantTitle}" 
-                     style="max-width: 80px; height: 80px; object-fit: contain; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"
+                     style="max-width: 80px; height: 80px; object-fit: contain; border-radius: 4px; box-shadow: 0 2px 4px                     rgba(0,0,0,0.1);"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div style="display:none; padding: 10px; background: #f5f5f5; text-align: center; border-radius: 4px;">
                     <i class="fas fa-exclamation-triangle"></i> Image failed to load
@@ -1450,18 +2195,20 @@ function updateVariantImagePreview(variantId, imageUrl, variantTitle) {
             </div>
         `;
     } else {
-        previewContainer.innerHTML = '';
+      previewContainer.innerHTML = "";
     }
-}
+  }
 
-// Update thumbnail preview
-function updateThumbnailPreview(index, imageUrl) {
-    const previewContainer = document.getElementById(`thumbnail-preview-${index}`);
+  // Update thumbnail preview
+  function updateThumbnailPreview(index, imageUrl) {
+    const previewContainer = document.getElementById(
+      `thumbnail-preview-${index}`
+    );
     thumbnailImages[index - 1] = imageUrl;
     thumbnailChanges = true;
-    
-    if (imageUrl && imageUrl.trim() !== '') {
-        previewContainer.innerHTML = `
+
+    if (imageUrl && imageUrl.trim() !== "") {
+      previewContainer.innerHTML = `
             <div class="thumbnail-preview-container">
                 <img src="${imageUrl}" 
                      alt="Thumbnail ${index}" 
@@ -1473,350 +2220,439 @@ function updateThumbnailPreview(index, imageUrl) {
             </div>
         `;
     } else {
-        previewContainer.innerHTML = '';
+      previewContainer.innerHTML = "";
     }
-}
+  }
 
-// Save thumbnail images
-async function saveThumbnailImages() {
+  // Save thumbnail images
+  async function saveThumbnailImages() {
     try {
-        if (!selectedProduct) {
-            showNotification('error', 'Please select a product first');
-            return;
+      if (!selectedProduct) {
+        showNotification("error", "Please select a product first");
+        return;
+      }
+
+      setButtonLoading("saveThumbnails", true);
+
+      const thumbnail1 = document.getElementById("thumbnail1").value.trim();
+      const thumbnail2 = document.getElementById("thumbnail2").value.trim();
+
+      const thumbnailUrls = [thumbnail1, thumbnail2].filter(
+        (url) => url !== ""
+      );
+
+      console.log("Saving thumbnail URLs:", thumbnailUrls);
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/products/${selectedProduct.id}/thumbnails`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ thumbnailUrls }),
+          mode: "cors",
         }
+      );
 
-        setButtonLoading('saveThumbnails', true);
+      const result = await response.json();
 
-        const thumbnail1 = document.getElementById('thumbnail1').value.trim();
-        const thumbnail2 = document.getElementById('thumbnail2').value.trim();
-        
-        const thumbnailUrls = [thumbnail1, thumbnail2].filter(url => url !== '');
-        
-        console.log('Saving thumbnail URLs:', thumbnailUrls);
-
-        const response = await fetch(`${API_BASE_URL}/api/products/${selectedProduct.id}/thumbnails`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ thumbnailUrls }),
-            mode: 'cors'
-        });
-
-        const result = await response.json();
-        
-        if (result.success) {
-            showNotification('success', 'Thumbnail images saved successfully!');
-            thumbnailChanges = false;
-            await loadProductDetails();
-        } else {
-            throw new Error(result.error || 'Save failed');
-        }
+      if (result.success) {
+        showNotification("success", "Thumbnail images saved successfully!");
+        thumbnailChanges = false;
+        await loadProductDetails();
+      } else {
+        throw new Error(result.error || "Save failed");
+      }
     } catch (error) {
-        console.error('Save thumbnails error:', error);
-        showNotification('error', `Failed to save thumbnails: ${error.message}`);
+      console.error("Save thumbnails error:", error);
+      showNotification("error", `Failed to save thumbnails: ${error.message}`);
     } finally {
-        setButtonLoading('saveThumbnails', false);
+      setButtonLoading("saveThumbnails", false);
     }
-}
+  }
 
-function clearAllThumbnails() {
-    document.getElementById('thumbnail1').value = '';
-    document.getElementById('thumbnail2').value = '';
-    updateThumbnailPreview(1, '');
-    updateThumbnailPreview(2, '');
-    thumbnailImages = ['', ''];
+  function clearAllThumbnails() {
+    document.getElementById("thumbnail1").value = "";
+    document.getElementById("thumbnail2").value = "";
+    updateThumbnailPreview(1, "");
+    updateThumbnailPreview(2, "");
+    thumbnailImages = ["", ""];
     thumbnailChanges = true;
-}
+  }
 
-// Upload media files to external Shopify store (Updated for videos)
-async function uploadMedia() {
-    const fileInput = document.getElementById('mediaFile');
+  // Upload media files to external Shopify store (FIXED to ensure product title)
+  async function uploadMedia() {
+    const fileInput = document.getElementById("mediaFile");
     const files = fileInput.files;
 
     if (!files || files.length === 0) {
-        showNotification('error', 'Please select files to upload');
-        return;
+      showNotification("error", "Please select files to upload");
+      return;
     }
 
     if (!selectedProduct) {
-        showNotification('error', 'Please select a product first');
-        return;
+      showNotification("error", "Please select a product first");
+      return;
     }
 
     const sku = selectedProduct.variants[0]?.sku;
     if (!sku) {
-        showNotification('error', 'Product must have a SKU');
-        return;
+      showNotification("error", "Product must have a SKU");
+      return;
     }
+
+    // Ensure product title is available
+    const productTitle = selectedProduct.title || "Unknown Product";
+    console.log("Uploading with product title:", productTitle);
 
     // Check file types and sizes
     for (let file of files) {
-        if (file.type.startsWith('video/')) {
-            if (file.size > 1024 * 1024 * 1024) { // 1GB limit for videos
-                showNotification('error', `Video file "${file.name}" is too large. Maximum size is 1GB.`);
-                return;
-            }
-        } else if (file.type.startsWith('image/')) {
-            if (file.size > 20 * 1024 * 1024) { // 20MB limit for images
-                showNotification('error', `Image file "${file.name}" is too large. Maximum size is 20MB.`);
-                return;
-            }
-        } else {
-            showNotification('error', `File "${file.name}" is not a supported format. Please upload images or videos only.`);
-            return;
+      if (file.type.startsWith("video/")) {
+        if (file.size > 1024 * 1024 * 1024) {
+          // 1GB limit for videos
+          showNotification(
+            "error",
+            `Video file "${file.name}" is too large. Maximum size is 1GB.`
+          );
+          return;
         }
+      } else if (file.type.startsWith("image/")) {
+        if (file.size > 20 * 1024 * 1024) {
+          // 20MB limit for images
+          showNotification(
+            "error",
+            `Image file "${file.name}" is too large. Maximum size is 20MB.`
+          );
+          return;
+        }
+      } else {
+        showNotification(
+          "error",
+          `File "${file.name}" is not a supported format. Please upload images or videos only.`
+        );
+        return;
+      }
     }
 
-    setButtonLoading('uploadButton', true);
+    setButtonLoading("uploadButton", true);
     showUploadProgress(true);
 
     try {
-        const totalFiles = files.length;
-        let uploadedFiles = 0;
+      const totalFiles = files.length;
+      let uploadedFiles = 0;
 
-              for (let file of files) {
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('sku', sku);
-            formData.append('productId', selectedProduct.id);
+      for (let file of files) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("sku", sku);
+        formData.append("productId", selectedProduct.id);
 
-            const fileType = file.type.startsWith('video/') ? 'video' : 'image';
-            console.log(`Uploading ${fileType}:`, file.name);
-            console.log('SKU:', sku);
-            console.log('Product ID:', selectedProduct.id);
+        const fileType = file.type.startsWith("video/") ? "video" : "image";
+        console.log(`Uploading ${fileType}:`, file.name);
+        console.log("SKU:", sku);
+        console.log("Product ID:", selectedProduct.id);
+        console.log("Product Title:", productTitle);
 
-            // Show current file being uploaded
-            showNotification('info', `Uploading ${fileType}: ${file.name}...`, 3000);
+        showNotification(
+          "info",
+          `Uploading ${fileType}: ${file.name}...`,
+          3000
+        );
 
-            const response = await fetch(`${API_BASE_URL}/api/media/upload-to-shopify`, {
-                method: 'POST',
-                body: formData,
-                mode: 'cors'
-            });
-
-            const result = await response.json();
-            console.log('Upload response:', result);
-
-            if (result.success) {
-                uploadedFiles++;
-                updateProgressBar((uploadedFiles / totalFiles) * 100);
-                pendingUploads.push(result.media);
-                console.log(`${fileType} uploaded successfully:`, result.media.url);
-                
-                // Show success for each file
-                showNotification('success', `${fileType} "${file.name}" uploaded successfully`, 2000);
-            } else {
-                throw new Error(result.error || 'Upload failed');
-            }
-        }
-
-        await loadProductDetails();
-        
-        showNotification('success', `Successfully uploaded ${uploadedFiles} files to external Shopify store`);
-        fileInput.value = '';
-
-    } catch (error) {
-        console.error('Upload error:', error);
-        showNotification('error', `Upload failed: ${error.message}`);
-    } finally {
-        setButtonLoading('uploadButton', false);
-        showUploadProgress(false);
-    }
-}
-
-
-// Delete media by URL
-async function deleteMediaByUrl(mediaUrl) {
-    if (!confirm('Are you sure you want to delete this media?')) {
-        return;
-    }
-
-    try {
-        showNotification('info', 'Deleting media from product and external store...');
-
-        console.log('Deleting media URL:', mediaUrl);
-        console.log('Product ID:', selectedProduct.id);
-
-        const response = await fetch(`${API_BASE_URL}/api/media/delete-from-shopify`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                mediaUrl: mediaUrl,
-                productId: selectedProduct.id
-            }),
-            mode: 'cors'
-        });
+        const response = await fetch(
+          `${API_BASE_URL}/api/media/upload-to-shopify`,
+          {
+            method: "POST",
+            body: formData,
+            mode: "cors",
+          }
+        );
 
         const result = await response.json();
-        console.log('Delete response:', result);
-        
+        console.log("Upload response:", result);
+
         if (result.success) {
-            showNotification('success', 'Media deleted successfully from product and external store');
-            await loadProductDetails();
+          uploadedFiles++;
+          updateProgressBar((uploadedFiles / totalFiles) * 100);
+          pendingUploads.push(result.media);
+
+          showNotification(
+            "success",
+            `${fileType} "${file.name}" uploaded successfully`,
+            2000
+          );
         } else {
-            throw new Error(result.error || 'Delete failed');
+          throw new Error(result.error || "Upload failed");
         }
+      }
+
+      // Reload product details to show new media
+      await loadProductDetails();
+
+      showNotification(
+        "success",
+        `Successfully uploaded ${uploadedFiles} files to external Shopify store`
+      );
+      fileInput.value = "";
     } catch (error) {
-        console.error('Delete error:', error);
-        showNotification('error', `Delete failed: ${error.message}`);
-    }
-}
-
-// Copy URL function
-async function copyURL(url, buttonElement) {
-    try {
-        await navigator.clipboard.writeText(url);
-        
-        const copyText = buttonElement.querySelector('.copy-text');
-        const copiedText = buttonElement.querySelector('.copied-text');
-        
-        copyText.style.display = 'none';
-        copiedText.style.display = 'inline-flex';
-        buttonElement.classList.add('btn-copied');
-        
-        showNotification('success', 'URL copied to clipboard!', 2000);
-        
-        setTimeout(() => {
-            copyText.style.display = 'inline-flex';
-            copiedText.style.display = 'none';
-            buttonElement.classList.remove('btn-copied');
-        }, 2000);
-        
-    } catch (error) {
-        const textArea = document.createElement('textarea');
-        textArea.value = url;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        showNotification('success', 'URL copied to clipboard!', 2000);
-    }
-}
-
-// Save all changes
-async function saveAllChanges() {
-    try {
-        setButtonLoading('saveChanges', true);
-        const savePromises = [];
-
-        for (const [variantId, imageUrl] of Object.entries(variantChanges)) {
-            console.log(`Saving variant ${variantId} with image URL:`, imageUrl);
-            
-            savePromises.push(
-                fetch(`${API_BASE_URL}/api/variants/${variantId}/image`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ imageUrl }),
-                    mode: 'cors'
-                }).then(response => response.json())
-            );
-        }
-
-        if (savePromises.length > 0) {
-            const results = await Promise.all(savePromises);
-            console.log('Save results:', results);
-            
-            const allSuccessful = results.every(result => result.success);
-            
-            if (allSuccessful) {
-                const deletedCount = results.filter(r => r.action === 'deleted').length;
-                const updatedCount = results.filter(r => r.action === 'updated' || r.action === 'created').length;
-                
-                let message = 'Variant changes saved successfully!';
-                if (deletedCount > 0 && updatedCount > 0) {
-                    message = `Updated ${updatedCount} and removed ${deletedCount} variant images`;
-                } else if (deletedCount > 0) {
-                    message = `Removed ${deletedCount} variant images`;
-                } else if (updatedCount > 0) {
-                    message = `Updated ${updatedCount} variant images`;
-                }
-                
-                showNotification('success', message);
-            } else {
-                showNotification('warning', 'Some changes may not have been saved properly');
-            }
-        } else {
-            showNotification('info', 'No changes to save');
-        }
-
-        variantChanges = {};
-        pendingUploads = [];
-        document.getElementById('saveSection').style.display = 'none';
-
-        await loadProductDetails();
-
-    } catch (error) {
-        console.error('Save error:', error);
-        showNotification('error', `Save failed: ${error.message}`);
+      console.error("Upload error:", error);
+      showNotification("error", `Upload failed: ${error.message}`);
     } finally {
-        setButtonLoading('saveChanges', false);
+      setButtonLoading("uploadButton", false);
+      showUploadProgress(false);
     }
-}
+  }
 
-// Show/hide loading spinner
-function showLoading(show) {
-    document.getElementById('loadingSpinner').style.display = show ? 'block' : 'none';
-}
+  // Copy URL function
+  async function copyURL(url, buttonElement) {
+    try {
+      await navigator.clipboard.writeText(url);
 
-// Show upload progress
-function showUploadProgress(show) {
-    document.getElementById('uploadProgress').style.display = show ? 'block' : 'none';
+      const copyText = buttonElement.querySelector(".copy-text");
+      const copiedText = buttonElement.querySelector(".copied-text");
+
+      copyText.style.display = "none";
+      copiedText.style.display = "inline-flex";
+      buttonElement.classList.add("btn-copied");
+
+      showNotification("success", "URL copied to clipboard!", 2000);
+
+      setTimeout(() => {
+        copyText.style.display = "inline-flex";
+        copiedText.style.display = "none";
+        buttonElement.classList.remove("btn-copied");
+      }, 2000);
+    } catch (error) {
+      const textArea = document.createElement("textarea");
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      showNotification("success", "URL copied to clipboard!", 2000);
+    }
+  }
+
+  // Save all changes
+  async function saveAllChanges() {
+    try {
+      setButtonLoading("saveChanges", true);
+      const savePromises = [];
+
+      for (const [variantId, imageUrl] of Object.entries(variantChanges)) {
+        console.log(`Saving variant ${variantId} with image URL:`, imageUrl);
+
+        savePromises.push(
+          fetch(`${API_BASE_URL}/api/variants/${variantId}/image`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ imageUrl }),
+            mode: "cors",
+          }).then((response) => response.json())
+        );
+      }
+
+      if (savePromises.length > 0) {
+        const results = await Promise.all(savePromises);
+        console.log("Save results:", results);
+
+        const allSuccessful = results.every((result) => result.success);
+
+        if (allSuccessful) {
+          const deletedCount = results.filter(
+            (r) => r.action === "deleted"
+          ).length;
+          const updatedCount = results.filter(
+            (r) => r.action === "updated" || r.action === "created"
+          ).length;
+
+          let message = "Variant changes saved successfully!";
+          if (deletedCount > 0 && updatedCount > 0) {
+            message = `Updated ${updatedCount} and removed ${deletedCount} variant images`;
+          } else if (deletedCount > 0) {
+            message = `Removed ${deletedCount} variant images`;
+          } else if (updatedCount > 0) {
+            message = `Updated ${updatedCount} variant images`;
+          }
+
+          showNotification("success", message);
+        } else {
+          showNotification(
+            "warning",
+            "Some changes may not have been saved properly"
+          );
+        }
+      } else {
+        showNotification("info", "No changes to save");
+      }
+
+      variantChanges = {};
+      pendingUploads = [];
+      document.getElementById("saveSection").style.display = "none";
+
+      await loadProductDetails();
+    } catch (error) {
+      console.error("Save error:", error);
+      showNotification("error", `Save failed: ${error.message}`);
+    } finally {
+      setButtonLoading("saveChanges", false);
+    }
+  }
+
+  // Helper function to extract public ID from URL
+  function extractPublicIdFromUrl(url) {
+    try {
+      const urlParts = url.split("/");
+      const filename = urlParts[urlParts.length - 1];
+      return filename.split(".")[0];
+    } catch (error) {
+      return Date.now().toString();
+    }
+  }
+
+  // Helper function to determine resource type
+  function determineResourceType(url) {
+    const videoExtensions = [".mp4", ".webm", ".mov", ".avi", ".mkv"];
+    const urlLower = url.toLowerCase();
+
+    for (const ext of videoExtensions) {
+      if (urlLower.includes(ext)) {
+        return "video";
+      }
+    }
+
+    return "image";
+  }
+
+  // Show/hide loading spinner
+  function showLoading(show) {
+    document.getElementById("loadingSpinner").style.display = show
+      ? "block"
+      : "none";
+  }
+
+  // Show upload progress
+  function showUploadProgress(show) {
+    document.getElementById("uploadProgress").style.display = show
+      ? "block"
+      : "none";
     if (!show) {
-        updateProgressBar(0);
+      updateProgressBar(0);
     }
-}
+  }
 
-// Update progress bar
-function updateProgressBar(percentage) {
-    document.getElementById('progressFill').style.width = percentage + '%';
-}
+  // Update progress bar
+  function updateProgressBar(percentage) {
+    document.getElementById("progressFill").style.width = percentage + "%";
+  }
 
-// Show product sections
-function showProductSections() {
-    document.getElementById('uploadSection').style.display = 'block';
-    document.getElementById('mediaSection').style.display = 'block';
-    document.getElementById('thumbnailSection').style.display = 'block';
-    document.getElementById('variantsSection').style.display = 'block';
-}
+  // Show product sections
+  function showProductSections() {
+    document.getElementById("uploadSection").style.display = "block";
+    document.getElementById("mediaSection").style.display = "block";
+    document.getElementById("thumbnailSection").style.display = "block";
+    document.getElementById("variantsSection").style.display = "block";
 
-// Hide product sections
-function hideProductSections() {
-    document.getElementById('uploadSection').style.display = 'none';
-    document.getElementById('mediaSection').style.display = 'none';
-    document.getElementById('thumbnailSection').style.display = 'none';
-    document.getElementById('variantsSection').style.display = 'none';
-    document.getElementById('saveSection').style.display = 'none';
-}
+    // Show product selection and info
+    document.getElementById("productSelection").style.display = "block";
+    document.getElementById("productInfo").style.display = "block";
+  }
 
-// Initialize the application
-function initializeApp() {
-    console.log('Shopify Media Manager initialized');
-    
+  // Hide product sections
+  function hideProductSections() {
+    document.getElementById("uploadSection").style.display = "none";
+    document.getElementById("mediaSection").style.display = "none";
+    document.getElementById("thumbnailSection").style.display = "none";
+    document.getElementById("variantsSection").style.display = "none";
+    document.getElementById("saveSection").style.display = "none";
+  }
+
+  // Add event listeners for delete all buttons
+  document.addEventListener("DOMContentLoaded", function () {
+    // Add new event listeners for delete all buttons
+    const deleteAllMetafieldBtn = document.getElementById(
+      "deleteAllMetafieldMediaBtn"
+    );
+    if (deleteAllMetafieldBtn) {
+      deleteAllMetafieldBtn.onclick = function (e) {
+        e.preventDefault();
+        deleteAllMetafieldMedia();
+        return false;
+      };
+    }
+
+    const deleteAllDefaultBtn = document.getElementById(
+      "deleteAllDefaultMediaBtn"
+    );
+    if (deleteAllDefaultBtn) {
+      deleteAllDefaultBtn.onclick = function (e) {
+        e.preventDefault();
+        deleteAllDefaultMedia();
+        return false;
+      };
+    }
+
+    // Check if there's a stored product on page load
+    const storedProduct = localStorage.getItem("selectedProduct");
+    if (storedProduct) {
+      try {
+        selectedProduct = JSON.parse(storedProduct);
+        console.log("Restored product from localStorage:", selectedProduct);
+
+        // Show the product sections
+        showProductSections();
+
+        // Load product details
+        loadProductDetails();
+
+        // Set the search input to the product title for reference
+        document.getElementById("productSearch").value = selectedProduct.title;
+
+        // Show notification that product was restored
+        showNotification(
+          "info",
+          `Restored product: ${selectedProduct.title}`,
+          3000
+        );
+      } catch (error) {
+        console.error("Error restoring product from localStorage:", error);
+        localStorage.removeItem("selectedProduct");
+      }
+    }
+  });
+
+  // Initialize the application
+  function initializeApp() {
+    console.log("Shopify Media Manager initialized");
+
     fetch(`${API_BASE_URL}/health`)
-        .then(response => {
-            if (response.ok) {
-                showNotification('success', 'Connected to backend server', 3000);
-            }
-        })
-        .catch(error => {
-            showNotification('warning', 'Backend server not accessible. Some features may not work.', 5000);
-        });
-}
+      .then((response) => {
+        if (response.ok) {
+          showNotification("success", "Connected to backend server", 3000);
+        }
+      })
+      .catch((error) => {
+        showNotification(
+          "warning",
+          "Backend server not accessible. Some features may not work.",
+          5000
+        );
+      });
+  }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-    initializeApp();
-}
+  // Clear stored product when needed
+  function clearStoredProduct() {
+    localStorage.removeItem("selectedProduct");
+    selectedProduct = null;
+    hideProductSections();
+  }
 
-// Export functions for global access (if needed)
-window.MediaManager = {
+  // Export functions for global access
+  window.MediaManager = {
     searchProducts,
     uploadMedia,
     copyURL,
@@ -1824,18 +2660,25 @@ window.MediaManager = {
     saveThumbnailImages,
     saveAllChanges,
     showNotification,
-    clearAllThumbnails
-};
+    clearAllThumbnails,
+    clearStoredProduct,
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeApp);
+  } else {
+    initializeApp();
+  }
 </script>
 
-
- 
-
 {% else %}
-    <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-exclamation-triangle"></i> Access Denied</h1>
-            <p>You don't have permission to access this page. Please contact an administrator.</p>
-        </div>
-    </div>
+<div class="container">
+  <div class="header">
+    <h1><i class="fas fa-exclamation-triangle"></i> Access Denied</h1>
+    <p>
+      You don't have permission to access this page. Please contact an
+      administrator.
+    </p>
+  </div>
+</div>
 {% endif %}

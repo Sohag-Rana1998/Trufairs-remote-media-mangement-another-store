@@ -56,7 +56,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
-// Get product details with metafields
+// Get product details with metafields (CORRECTED GraphQL)
 router.get("/:productId", async (req, res) => {
   try {
     const { productId } = req.params;
@@ -148,13 +148,131 @@ router.get("/:productId", async (req, res) => {
       })
     );
 
+    // Try to get media using GraphQL (CORRECTED QUERY)
+    let mediaItems = [];
+    try {
+      console.log("Fetching media via GraphQL...");
+
+      const mediaQuery = `
+        query getProductMedia($id: ID!) {
+          product(id: $id) {
+            id
+            media(first: 50) {
+              edges {
+                node {
+                  id
+                  mediaContentType
+                  alt
+                  ... on Video {
+                    id
+                    sources {
+                      url
+                      mimeType
+                      format
+                      height
+                      width
+                    }
+                    originalSource {
+                      url
+                    }
+                    preview {
+                      image {
+                        url
+                      }
+                    }
+                  }
+                  ... on MediaImage {
+                    id
+                    image {
+                      url
+                      altText
+                    }
+                  }
+                  ... on ExternalVideo {
+                    id
+                    embedUrl
+                    host
+                    originUrl
+                  }
+                  ... on Model3d {
+                    id
+                    sources {
+                      url
+                      mimeType
+                      format
+                    }
+                    originalSource {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      const mediaResponse = await mainStore.makeGraphQLRequest(mediaQuery, {
+        id: `gid://shopify/Product/${productId}`,
+      });
+
+      console.log("GraphQL media response received");
+
+      // Process media data
+      if (
+        mediaResponse.data &&
+        mediaResponse.data.product &&
+        mediaResponse.data.product.media
+      ) {
+        mediaItems = mediaResponse.data.product.media.edges.map((edge) => {
+          const node = edge.node;
+          let processedMedia = {
+            id: node.id,
+            alt: node.alt,
+            media_type: node.mediaContentType,
+          };
+
+          if (node.mediaContentType === "VIDEO" && node.sources) {
+            processedMedia.sources = node.sources;
+            processedMedia.original_source = node.originalSource;
+            processedMedia.preview_image = node.preview?.image;
+            console.log(`Found video media: ${node.id}`, processedMedia);
+          } else if (node.mediaContentType === "IMAGE" && node.image) {
+            processedMedia.image = node.image;
+            console.log(`Found image media: ${node.id}`, processedMedia);
+          } else if (node.mediaContentType === "EXTERNAL_VIDEO") {
+            processedMedia.external_url = node.embedUrl || node.originUrl;
+            processedMedia.host = node.host;
+            console.log(`Found external video: ${node.id}`, processedMedia);
+          } else if (node.mediaContentType === "MODEL_3D") {
+            processedMedia.sources = node.sources;
+            processedMedia.original_source = node.originalSource;
+            console.log(`Found 3D model: ${node.id}`, processedMedia);
+          }
+
+          return processedMedia;
+        });
+      }
+
+      console.log(`Found ${mediaItems.length} media items via GraphQL`);
+    } catch (mediaError) {
+      console.log("Could not fetch media via GraphQL:", mediaError.message);
+      // Continue without media data - will fall back to images only
+    }
+
     const product = {
       ...productData.product,
       metafields: processedMetafields,
       variants: variantsWithMetafields,
+      media: mediaItems, // Add media items to product
     };
 
     console.log(`Successfully loaded product details for: ${product.title}`);
+    console.log(
+      `Product has ${product.images?.length || 0} images and ${
+        mediaItems.length
+      } media items`
+    );
 
     res.json({
       success: true,
@@ -166,6 +284,398 @@ router.get("/:productId", async (req, res) => {
       success: false,
       error: error.message,
     });
+  }
+});
+
+// Delete default product media (CORRECTED GraphQL)
+router.delete("/:productId/delete-default-media", async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const { mediaUrl } = req.body;
+
+    if (!mediaUrl || !productId) {
+      return res.status(400).json({
+        success: false,
+        error: "mediaUrl and productId are required",
+      });
+    }
+
+    console.log(
+      `Deleting default media from product ${productId}: ${mediaUrl}`
+    );
+
+    let deletionResult = null;
+
+    // First, try to delete from product images
+    try {
+      const imagesResponse = await mainStore.makeRequest(
+        "GET",
+        `/products/${productId}/images.json`
+      );
+
+      const matchingImage = imagesResponse.images.find(
+        (image) => image.src === mediaUrl
+      );
+
+      if (matchingImage) {
+        await mainStore.makeRequest(
+          "DELETE",
+          `/products/${productId}/images/${matchingImage.id}.json`
+        );
+        console.log(
+          `Successfully deleted image ${matchingImage.id} from product ${productId}`
+        );
+
+        deletionResult = {
+          success: true,
+          message: "Image deleted successfully",
+          imageId: matchingImage.id,
+          type: "image",
+        };
+      }
+    } catch (imageError) {
+      console.log("Not found in product images, trying media...");
+    }
+
+    // If not found in images, try to delete from media using GraphQL
+    if (!deletionResult) {
+      try {
+        // First, get all media to find the matching one (CORRECTED QUERY)
+        const mediaQuery = `
+          query getProductMedia($id: ID!) {
+            product(id: $id) {
+              media(first: 50) {
+                edges {
+                  node {
+                    id
+                    mediaContentType
+                    ... on Video {
+                      sources {
+                        url
+                      }
+                      originalSource {
+                        url
+                      }
+                    }
+                    ... on MediaImage {
+                      image {
+                        url
+                      }
+                    }
+                    ... on ExternalVideo {
+                      embedUrl
+                      originUrl
+                    }
+                    ... on Model3d {
+                      sources {
+                        url
+                      }
+                      originalSource {
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `;
+
+        const mediaResponse = await mainStore.makeGraphQLRequest(mediaQuery, {
+          id: `gid://shopify/Product/${productId}`,
+        });
+
+        let matchingMediaId = null;
+
+        if (
+          mediaResponse.data &&
+          mediaResponse.data.product &&
+          mediaResponse.data.product.media
+        ) {
+          for (const edge of mediaResponse.data.product.media.edges) {
+            const node = edge.node;
+
+            // Check various URL fields based on media type
+            let urls = [];
+
+            if (node.mediaContentType === "VIDEO") {
+              urls = [
+                ...(node.sources || []).map((s) => s.url),
+                node.originalSource?.url,
+              ].filter(Boolean);
+            } else if (node.mediaContentType === "IMAGE") {
+              urls = [node.image?.url].filter(Boolean);
+            } else if (node.mediaContentType === "EXTERNAL_VIDEO") {
+              urls = [node.embedUrl, node.originUrl].filter(Boolean);
+            } else if (node.mediaContentType === "MODEL_3D") {
+              urls = [
+                ...(node.sources || []).map((s) => s.url),
+                node.originalSource?.url,
+              ].filter(Boolean);
+            }
+
+            if (urls.includes(mediaUrl)) {
+              matchingMediaId = node.id;
+              break;
+            }
+          }
+        }
+
+        if (matchingMediaId) {
+          // Delete media using GraphQL
+          const deleteMediaMutation = `
+            mutation productDeleteMedia($mediaIds: [ID!]!, $productId: ID!) {
+              productDeleteMedia(mediaIds: $mediaIds, productId: $productId) {
+                deletedMediaIds
+                deletedProductImageIds
+                mediaUserErrors {
+                  field
+                  message
+                }
+                product {
+                  id
+                }
+              }
+            }
+          `;
+
+          const deleteResponse = await mainStore.makeGraphQLRequest(
+            deleteMediaMutation,
+            {
+              mediaIds: [matchingMediaId],
+              productId: `gid://shopify/Product/${productId}`,
+            }
+          );
+
+          if (
+            deleteResponse.data.productDeleteMedia.mediaUserErrors.length > 0
+          ) {
+            throw new Error(
+              `Media deletion error: ${deleteResponse.data.productDeleteMedia.mediaUserErrors[0].message}`
+            );
+          }
+
+          console.log(
+            `Successfully deleted media ${matchingMediaId} from product ${productId}`
+          );
+
+          deletionResult = {
+            success: true,
+            message: "Media deleted successfully",
+            mediaId: matchingMediaId,
+            type: "media",
+          };
+        }
+      } catch (mediaError) {
+        console.error("Error deleting from media:", mediaError);
+      }
+    }
+
+    if (deletionResult) {
+      res.json(deletionResult);
+    } else {
+      res.status(404).json({
+        success: false,
+        error: "Media not found in product images or media",
+      });
+    }
+  } catch (error) {
+    console.error("Delete default media error:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+
+    res.status(500).json({
+      success: false,
+      error: error.message || "Delete failed",
+    });
+  }
+});
+
+// Delete all default product media (CORRECTED GraphQL)
+router.delete("/:productId/delete-all-default-media", async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    console.log(`Deleting all default media from product ${productId}`);
+
+    let deletedCount = 0;
+    let failedCount = 0;
+    const results = [];
+
+    // Delete all product images
+    try {
+      const imagesResponse = await mainStore.makeRequest(
+        "GET",
+        `/products/${productId}/images.json`
+      );
+
+      for (const image of imagesResponse.images) {
+        try {
+          await mainStore.makeRequest(
+            "DELETE",
+            `/products/${productId}/images/${image.id}.json`
+          );
+
+          results.push({
+            imageId: image.id,
+            url: image.src,
+            success: true,
+            message: "Image deleted successfully",
+            type: "image",
+          });
+
+          deletedCount++;
+          console.log(`Deleted image ${image.id} from product ${productId}`);
+        } catch (deleteError) {
+          console.error(`Error deleting image ${image.id}:`, deleteError);
+
+          results.push({
+            imageId: image.id,
+            url: image.src,
+            success: false,
+            error: deleteError.message,
+            type: "image",
+          });
+
+          failedCount++;
+        }
+      }
+    } catch (imagesError) {
+      console.error("Error fetching product images:", imagesError);
+    }
+
+    // Delete all media using GraphQL (CORRECTED QUERY)
+    try {
+      const mediaQuery = `
+        query getProductMedia($id: ID!) {
+          product(id: $id) {
+            media(first: 50) {
+              edges {
+                node {
+                  id
+                  mediaContentType
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      const mediaResponse = await mainStore.makeGraphQLRequest(mediaQuery, {
+        id: `gid://shopify/Product/${productId}`,
+      });
+
+      if (
+        mediaResponse.data &&
+        mediaResponse.data.product &&
+        mediaResponse.data.product.media
+      ) {
+        const mediaIds = mediaResponse.data.product.media.edges.map(
+          (edge) => edge.node.id
+        );
+
+        if (mediaIds.length > 0) {
+          const deleteMediaMutation = `
+            mutation productDeleteMedia($mediaIds: [ID!]!, $productId: ID!) {
+              productDeleteMedia(mediaIds: $mediaIds, productId: $productId) {
+                deletedMediaIds
+                deletedProductImageIds
+                mediaUserErrors {
+                  field
+                  message
+                }
+              }
+            }
+          `;
+
+          const deleteResponse = await mainStore.makeGraphQLRequest(
+            deleteMediaMutation,
+            {
+              mediaIds: mediaIds,
+              productId: `gid://shopify/Product/${productId}`,
+            }
+          );
+
+          if (
+            deleteResponse.data.productDeleteMedia.mediaUserErrors.length > 0
+          ) {
+            console.error(
+              "Media deletion errors:",
+              deleteResponse.data.productDeleteMedia.mediaUserErrors
+            );
+            failedCount += mediaIds.length;
+          } else {
+            const deletedMediaIds =
+              deleteResponse.data.productDeleteMedia.deletedMediaIds || [];
+            deletedCount += deletedMediaIds.length;
+
+            deletedMediaIds.forEach((mediaId) => {
+              results.push({
+                mediaId: mediaId,
+                success: true,
+                message: "Media deleted successfully",
+                type: "media",
+              });
+            });
+
+            console.log(
+              `Deleted ${deletedMediaIds.length} media            items from product ${productId}`
+            );
+          }
+        }
+      }
+    } catch (mediaError) {
+      console.error("Error deleting media:", mediaError);
+    }
+
+    res.json({
+      success: failedCount === 0,
+      message: `Bulk deletion completed: ${deletedCount} deleted, ${failedCount} failed`,
+      deletedCount,
+      failedCount,
+      totalProcessed: results.length,
+      results,
+    });
+  } catch (error) {
+    console.error("Delete all default media error:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+    });
+
+    res.status(500).json({
+      success: false,
+      error: error.message || "Delete all failed",
+    });
+  }
+});
+
+// Fetch metafield media for a product
+router.get("/products/:productId/metafield-media", async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const metafieldsResponse = await externalStore.makeRequest(
+      "GET",
+      `/products/${productId}/metafields.json`
+    );
+    const metafieldMedia = metafieldsResponse.metafields.filter(
+      (mf) => mf.namespace === "media_info"
+    );
+
+    // Map metafield media to a format suitable for the frontend
+    const mediaList = metafieldMedia.map((mf) => ({
+      id: mf.id,
+      url: mf.value, // Assuming the value is the media URL
+      alt: mf.key, // Use key or any other property for alt text
+    }));
+
+    res.json(mediaList);
+  } catch (error) {
+    console.error("Error fetching metafield media:", error);
+    res.status(500).json({ error: "Failed to fetch metafield media." });
   }
 });
 

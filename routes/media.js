@@ -527,7 +527,10 @@ async function uploadImageToExternalStore(file, sku, productTitle) {
     });
 
     // Create or get a dummy product for image storage
-    const dummyProduct = await getOrCreateDummyProduct(`IMAGE_${sku}`);
+    const dummyProduct = await getOrCreateDummyProduct(
+      `IMAGE_${sku}`,
+      productTitle
+    );
     console.log("Image storage product obtained:", dummyProduct.id);
 
     // Convert image to base64
