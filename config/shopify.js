@@ -50,39 +50,39 @@ class ShopifyAPI {
   }
 
   // GraphQL method for file operations
-  async makeGraphQLRequest(query, variables = {}) {
-    try {
-      const response = await axios.post(
-        this.graphqlURL,
-        {
-          query: query,
-          variables: variables,
-        },
-        {
-          headers: {
-            "X-Shopify-Access-Token": this.accessToken,
-            "Content-Type": "application/json",
-          },
-          timeout: 300000, // 5 minutes timeout for large files
-        }
-      );
+  // async makeGraphQLRequest(query, variables = {}) {
+  //   try {
+  //     const response = await axios.post(
+  //       this.graphqlURL,
+  //       {
+  //         query: query,
+  //         variables: variables,
+  //       },
+  //       {
+  //         headers: {
+  //           "X-Shopify-Access-Token": this.accessToken,
+  //           "Content-Type": "application/json",
+  //         },
+  //         timeout: 300000, // 5 minutes timeout for large files
+  //       }
+  //     );
 
-      if (response.data.errors) {
-        throw new Error(
-          `GraphQL Error: ${JSON.stringify(response.data.errors)}`
-        );
-      }
+  //     if (response.data.errors) {
+  //       throw new Error(
+  //         `GraphQL Error: ${JSON.stringify(response.data.errors)}`
+  //       );
+  //     }
 
-      return response.data;
-    } catch (error) {
-      console.error("Shopify GraphQL Error:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-      });
-      throw error;
-    }
-  }
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error("Shopify GraphQL Error:", {
+  //       message: error.message,
+  //       response: error.response?.data,
+  //       status: error.response?.status,
+  //     });
+  //     throw error;
+  //   }
+  // }
 
   // Add this method to your ShopifyAPI class in config/shopify.js
   async makeGraphQLRequest(query, variables = {}) {
